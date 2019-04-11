@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Tickets.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="TicketsStoreContainer">
+    <EntitySet Name="Tickets" EntityType="Tickets.Store.Tickets" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Users" EntityType="Tickets.Store.Users" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Accounts" EntityType="Tickets.Store.Accounts" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="UsersAccounts" Association="Tickets.Store.UsersAccounts">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Owner" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CreationDate" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AssignmentDate" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ClosureDate" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="DeadlineDate" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Subject" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AssignedTo" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Team" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Comment" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="ManagersComment" Type="nvarchar(max)" Nullable="true" />
+    <Property Name="Notes1" Type="nvarchar(max)" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Surname" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Mail" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Department" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Manager" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Accounts">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Login" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <Association Name="UsersAccounts">
+    <End Role="User" Type="Tickets.Store.Users" Multiplicity="1" />
+    <End Role="Account" Type="Tickets.Store.Accounts" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="Tickets" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+        <EntityContainer Name="TicketsContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Tickets" EntityType="Tickets.Tickets" />
+          <EntitySet Name="Users" EntityType="Tickets.Users" />
+          <EntitySet Name="Accounts" EntityType="Tickets.Accounts" cg:GetterAccess="Internal" />
+          <AssociationSet Name="UsersAccounts" Association="Tickets.UsersAccounts">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Account" EntitySet="Accounts" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Tickets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Owner" Type="String" Nullable="false" />
+          <Property Name="CreationDate" Type="String" Nullable="false" />
+          <Property Name="AssignmentDate" Type="String" Nullable="true" />
+          <Property Name="ClosureDate" Type="String" Nullable="true" />
+          <Property Name="DeadlineDate" Type="String" Nullable="true" />
+          <Property Name="Subject" Type="String" Nullable="true" />
+          <Property Name="Description" Type="String" Nullable="true" />
+          <Property Name="Status" Type="String" Nullable="false" />
+          <Property Name="AssignedTo" Type="String" Nullable="true" />
+          <Property Name="Team" Type="String" Nullable="true" />
+          <Property Name="Comment" Type="String" Nullable="true" />
+          <Property Name="ManagersComment" Type="String" Nullable="true" />
+          <Property Name="Notes1" Type="String" Nullable="true" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" />
+          <Property Name="Surname" Type="String" Nullable="false" />
+          <Property Name="Mail" Type="String" Nullable="false" />
+          <Property Name="Department" Type="String" Nullable="false" />
+          <Property Name="Manager" Type="String" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Tickets.UsersAccounts" FromRole="User" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Accounts" cg:TypeAccess="Public">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" Nullable="false" />
+          <Property Name="Password" Type="String" Nullable="false" />
+          <NavigationProperty Name="User" Relationship="Tickets.UsersAccounts" FromRole="Account" ToRole="User" />
+        </EntityType>
+        <Association Name="UsersAccounts">
+          <End Type="Tickets.Users" Role="User" Multiplicity="1" >
+          </End>
+          <End Type="Tickets.Accounts" Role="Account" Multiplicity="1" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Account">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TicketsStoreContainer" CdmEntityContainer="TicketsContainer">
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="IsTypeOf(Tickets.Tickets)">
+        <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="AssignmentDate" ColumnName="AssignmentDate" />
+          <ScalarProperty Name="ClosureDate" ColumnName="ClosureDate" />
+          <ScalarProperty Name="DeadlineDate" ColumnName="DeadlineDate" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="AssignedTo" ColumnName="AssignedTo" />
+          <ScalarProperty Name="Team" ColumnName="Team" />
+          <ScalarProperty Name="Comment" ColumnName="Comment" />
+          <ScalarProperty Name="ManagersComment" ColumnName="ManagersComment" />
+          <ScalarProperty Name="Notes1" ColumnName="Notes1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(Tickets.Users)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Surname" ColumnName="Surname" />
+          <ScalarProperty Name="Mail" ColumnName="Mail" />
+          <ScalarProperty Name="Department" ColumnName="Department" />
+          <ScalarProperty Name="Manager" ColumnName="Manager" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Accounts">
+      <EntityTypeMapping TypeName="IsTypeOf(Tickets.Accounts)">
+        <MappingFragment StoreEntitySet="Accounts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
