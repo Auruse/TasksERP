@@ -5,22 +5,20 @@ using TasksERP.Models;
 
 namespace TasksERP.Controllers
 {
-    public class HomeController : Controller
+    public class ITController : Controller
     {
+        // GET: IT        
         TicketsContainer db = new TicketsContainer();
         // GET: Home
         public ActionResult Index()
         {
-            
-           
-
             return View();
         }
-         
+
         public ActionResult Main()
         {
-            ViewBag.TicketsTotal = db.Tickets.Count()>0 ? db.Tickets.Count()  : 0;
-            ViewBag.TicketsClosed = db.Tickets.Count() > 0 ? db.Tickets.Count(x=>x.Status=="Closed") : 0;
+            ViewBag.TicketsTotal = db.Tickets.Count() > 0 ? db.Tickets.Count() : 0;
+            ViewBag.TicketsClosed = db.Tickets.Count() > 0 ? db.Tickets.Count(x => x.Status == "Closed") : 0;
             ViewBag.TicketsInProgress = db.Tickets.Count() > 0 ? db.Tickets.Count(x => x.Status == "In Progress") : 0;
             ViewBag.TicketsNew = db.Tickets.Count() > 0 ? db.Tickets.Count(x => x.Status == "New") : 0;
             return View(db.Tickets);
@@ -28,7 +26,7 @@ namespace TasksERP.Controllers
         public ActionResult Exit()
         {
 
-            return View("Index");
+            return RedirectToAction("Index", "Home");
         }
         [HttpGet]
         public ActionResult NewTask()
@@ -40,29 +38,27 @@ namespace TasksERP.Controllers
         [HttpPost]
         public ActionResult NewTask(Tickets TicketData)
         {
-            if (!string.IsNullOrEmpty(TicketData.Comment))
-                {
-                TicketData.Status = "New";
-                TicketData.CreationDate = DateTime.Now.ToString();
+            TicketData.Status = "New";
+            TicketData.CreationDate = DateTime.Now.ToString();
 
-                db.Tickets.Add(TicketData);
-                db.SaveChanges(); };
-            
-            return RedirectToAction("Main");
+            db.Tickets.Add(TicketData);
+            db.SaveChanges();
+
+            return RedirectToAction("Main", "IT");
         }
         public ActionResult GetTicket(int? id)
         {
             if (id.HasValue)
             {
-            Tickets t = db.Tickets.Find(id);
+                Tickets t = db.Tickets.Find(id);
                 t.Status = "In Progress";
                 t.AssignedTo = "consultant01@test.ru";
-                t.AssignmentDate=DateTime.Now.ToString();
+                t.AssignmentDate = DateTime.Now.ToString();
                 db.SaveChanges();
             }
-             
 
-            return RedirectToAction("Main");
+
+            return RedirectToAction("Main", "IT");
         }
         public ActionResult Close(int? id)
         {
@@ -70,13 +66,13 @@ namespace TasksERP.Controllers
             {
                 Tickets t = db.Tickets.Find(id);
                 t.Status = "Closed";
-                
+
                 t.ClosureDate = DateTime.Now.ToString();
                 db.SaveChanges();
             }
 
 
-            return RedirectToAction("Main");
+            return RedirectToAction("Main", "IT");
         }
         public ActionResult Reply(int? id)
         {
@@ -90,7 +86,7 @@ namespace TasksERP.Controllers
             //}
 
 
-            return RedirectToAction("Main");
+            return RedirectToAction("Main", "IT");
         }
         public ActionResult Redirect(int? id)
         {
@@ -104,7 +100,7 @@ namespace TasksERP.Controllers
             //}
 
 
-            return RedirectToAction("Main");
+            return RedirectToAction("Main", "IT");
         }
         [HttpGet]
         public ActionResult Details(int? id)
@@ -118,7 +114,7 @@ namespace TasksERP.Controllers
             else
             {
                 ViewBag.TicketsTotal = 0;
-                return RedirectToAction("Main");
+                return RedirectToAction("Main", "IT");
             }
 
             return View(t);
@@ -132,9 +128,9 @@ namespace TasksERP.Controllers
                 db.Tickets.Remove(t);
                 db.SaveChanges();
             }
-            
-          return RedirectToAction("Main");
-             
+
+            return RedirectToAction("Main", "IT");
+
         }
         [HttpPost]
         public ActionResult Details(Tickets TicketData)
@@ -153,7 +149,7 @@ namespace TasksERP.Controllers
 
                 db.SaveChanges();
             }
-            return RedirectToAction("Main");
+            return RedirectToAction("Main", "IT");
         }
     }
 }

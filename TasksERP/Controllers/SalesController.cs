@@ -5,7 +5,7 @@ using TasksERP.Models;
 
 namespace TasksERP.Controllers
 {
-    public class HomeController : Controller
+    public class SalesController : Controller
     {
         TicketsContainer db = new TicketsContainer();
         // GET: Home
