@@ -5,9 +5,9 @@ $(function() {
    */
   'use strict';
   var data = {
-    labels: ["2013", "2014", "2014", "2015", "2016", "2017"],
+    labels: ["2014", "2015", "2016", "2017", "2018", "2019"],
     datasets: [{
-      label: '# of Votes',
+      label: 'Requests',
       data: [10, 19, 3, 5, 2, 3],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
@@ -100,9 +100,9 @@ $(function() {
 
     // These labels appear in the legend and in the tooltips when hovering different arcs
     labels: [
-      'Pink',
-      'Blue',
-      'Yellow',
+      'Sales',
+      'HR',
+      'Other',
     ]
   };
   var doughnutPieOptions = {
@@ -143,10 +143,10 @@ $(function() {
     ]
   };
   var areaData = {
-    labels: ["2013", "2014", "2015", "2016", "2017"],
+    labels: ["2015", "2016", "2017", "2018", "2019"],
     datasets: [{
-      label: '# of Votes',
-      data: [12, 19, 3, 5, 2, 3],
+      label: 'Requests',
+      data: [12, 19, 3, 5, 3, 3],
       backgroundColor: [
         'rgba(255, 99, 132, 0.2)',
         'rgba(54, 162, 235, 0.2)',

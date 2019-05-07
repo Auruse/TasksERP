@@ -25,6 +25,7 @@ namespace TasksERP.Controllers
             ViewBag.TicketsNew = db.Tickets.Count() > 0 ? db.Tickets.Count(x => x.Status == "New") : 0;
             return View(db.Tickets);
         }
+         
         public ActionResult Exit()
         {
 
