@@ -9,6 +9,7 @@
         <EntityTypeShape EntityType="Tickets.Users" Width="1.5" PointX="0.5" PointY="0.5" />
         <EntityTypeShape EntityType="Tickets.Accounts" Width="1.5" PointX="0.5" PointY="3.375" />
         <AssociationConnector Association="Tickets.UsersAccounts" />
+        <EntityTypeShape EntityType="Tickets.TicketsHR" Width="1.5" PointX="5.375" PointY="0.5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

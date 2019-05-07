@@ -54,35 +54,20 @@
                                 </a>
                             </li>
                         }
-                        if (urlPath.Contains("Sales"))
-                        {
-                            <li id="2" class="nav-item active">
-                                <a href='@Url.Action("Main", "Sales")' class="nav-link">
-                                    <i class="mdi mdi-sale"></i>Sales
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li id="2" class="nav-item">
-                                <a href='@Url.Action("Main", "Sales")' class="nav-link">
-                                    <i class="mdi mdi-sale"></i>Sales
-                                </a>
-                            </li>
-                        }
+                       
                         if (urlPath.Contains("HR"))
                         {
                             <li id="3" class="nav-item active">
-                                <a href="#" class="nav-link">
-                                    <i class="mdi mdi-human"></i>HR
+                                <a href="@Url.Action("Main", "HR")" class="nav-link">
+                                    <i class="mdi mdi-human"></i>Кадры
                                 </a>
                             </li>
                         }
                         else
                         {
                             <li id="3" class="nav-item">
-                                <a href="#" class="nav-link">
-                                    <i class="mdi mdi-human"></i>HR
+                                <a href="@Url.Action("Main", "HR")" class="nav-link">
+                                    <i class="mdi mdi-human"></i>Кадры
                                 </a>
                             </li>
                         }
@@ -90,7 +75,7 @@
                         {
                             <li id="4" class="nav-item active">
                                 <a href=@Url.Action("Main", "IT") class="nav-link">
-                                    <i class="mdi mdi-information"></i>IT
+                                    <i class="mdi mdi-information"></i>ИТ
                                 </a>
                             </li>
                         }
@@ -98,7 +83,7 @@
                         {
                             <li id="4" class="nav-item">
                                 <a href=@Url.Action("Main", "IT") class="nav-link">
-                                    <i class="mdi mdi-information"></i>IT
+                                    <i class="mdi mdi-information"></i>ИТ
                                 </a>
                             </li>
                         }
@@ -106,19 +91,7 @@
                     }
 
                 </ul>
-                <ul class="navbar-nav navbar-nav-right header-links">
-                    <li class="nav-item">
-                        <a href="@Url.Action("ChangeLang","Home")" class="nav-link">
-                            <i class="mdi"></i>RU
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <a href="@Url.Action("Main")" class="nav-link">
-                            <i class="mdi"></i>EN
-                        </a>
-                    </li>
-                 </ul>
-
+                 
                     <ul class="navbar-nav navbar-nav-right">
 
                         <li class="nav-item dropdown">
@@ -129,9 +102,9 @@
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
                                 <div class="dropdown-item">
                                     <p class="mb-0 font-weight-normal float-left">
-                                        You have 7 new messages
+                                        7 новых сообщений
                                     </p>
-                                    <span class="badge badge-info badge-pill float-right">View all</span>
+                                    <span class="badge badge-info badge-pill float-right">Открыть все</span>
                                 </div>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item preview-item">
@@ -140,11 +113,11 @@
                                     </div>
                                     <div class="preview-item-content flex-grow">
                                         <h6 class="preview-subject ellipsis font-weight-medium text-dark">
-                                            David Grey
-                                            <span class="float-right font-weight-light small-text">1 Minutes ago</span>
+                                            Давид Горнов
+                                            <span class="float-right font-weight-light small-text">1 мин. назад</span>
                                         </h6>
                                         <p class="font-weight-light small-text">
-                                            Leave Request: 27/05/19-10/06/19
+                                           Заявление на отпуск: 27/05/19-10/06/19
                                         </p>
                                     </div>
                                 </a>
@@ -155,11 +128,11 @@
                                     </div>
                                     <div class="preview-item-content flex-grow">
                                         <h6 class="preview-subject ellipsis font-weight-medium text-dark">
-                                            Yoki Sakura
-                                            <span class="float-right font-weight-light small-text">15 Minutes ago</span>
+                                            Галина Ли
+                                            <span class="float-right font-weight-light small-text">15 мин. назад</span>
                                         </h6>
                                         <p class="font-weight-light small-text">
-                                            Product Launch Policy. Awaiting your approval.
+                                            Положение о закупках - 2019. Ждем Ваше одобрение.
                                         </p>
                                     </div>
                                 </a>
@@ -170,75 +143,20 @@
                                     </div>
                                     <div class="preview-item-content flex-grow">
                                         <h6 class="preview-subject ellipsis font-weight-medium text-dark">
-                                            Johnson
-                                            <span class="float-right font-weight-light small-text">18 Minutes ago</span>
+                                            Крис Вандельберг
+                                            <span class="float-right font-weight-light small-text">18 ч. назад </span>
                                         </h6>
                                         <p class="font-weight-light small-text">
-                                            Contract with Prisma LLC. Awating your signature.
+                                            Договор с АО "ГринАтом". Ждем Вашей подписи.
                                         </p>
                                     </div>
                                 </a>
                             </div>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-                                <i class="mdi mdi-bell"></i>
-                                <span class="count">4</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-                                <a class="dropdown-item">
-                                    <p class="mb-0 font-weight-normal float-left">
-                                        You have 4 new notifications
-                                    </p>
-                                    <span class="badge badge-pill badge-warning float-right">View all</span>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-success">
-                                            <i class="mdi mdi-alert-circle-outline mx-0"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <h6 class="preview-subject font-weight-medium text-dark">Application Error</h6>
-                                        <p class="font-weight-light small-text">
-                                            Just now
-                                        </p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-warning">
-                                            <i class="mdi mdi-comment-text-outline mx-0"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <h6 class="preview-subject font-weight-medium text-dark">Settings</h6>
-                                        <p class="font-weight-light small-text">
-                                            Private message
-                                        </p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <div class="preview-icon bg-info">
-                                            <i class="mdi mdi-email-outline mx-0"></i>
-                                        </div>
-                                    </div>
-                                    <div class="preview-item-content">
-                                        <h6 class="preview-subject font-weight-medium text-dark">New user registration</h6>
-                                        <p class="font-weight-light small-text">
-                                            2 days ago
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
+                      
                         <li class="nav-item dropdown d-none d-xl-inline-block">
                             <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                                <span class="profile-text">Sergei M. Ivanov</span>
+                                <span class="profile-text">Сергей M. Иванов</span>
                                 <img class="img-xs rounded-circle" src="../../images/faces/face1.jpg" alt="Profile image">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
@@ -256,16 +174,16 @@
                                     </div>
                                 </a>
                                 <a class="dropdown-item mt-2">
-                                    Manage Accounts
+                                    Профайл
                                 </a>
                                 <a class="dropdown-item">
-                                    Change Password
+                                    Смена пароля
                                 </a>
                                 <a class="dropdown-item">
-                                    Check Inbox
+                                    Проверить почту
                                 </a>
                                 <a class="dropdown-item" onclick="location.href='@Url.Action("Exit", "Home")'">
-                                    Sign Out
+                                    Выйти
                                 </a>
                             </div>
                         </li>
@@ -287,15 +205,15 @@
                                     <img src="../../images/faces/face1.jpg" alt="profile image">
                                 </div>
                                 <div class="text-wrapper">
-                                    <p class="profile-name">Sergei M. Ivanov</p>
+                                    <p class="profile-name">Сергей M. Иванов</p>
                                     <div>
-                                        <small class="designation text-muted">Manager</small>
+                                        <small class="designation text-muted">Менеджер</small>
                                         <span class="status-indicator online"></span>
                                     </div>
                                 </div>
                             </div>
                             <button class="btn btn-success btn-block" onclick="location.href='@Url.Action("NewTask", "Home")'">
-                                New Task
+                                Новая задача
                                 <i class="mdi mdi-plus"></i>
                             </button>
                         </div>

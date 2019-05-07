@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 04/10/2019 15:26:47
+-- Date Created: 05/07/2019 17:49:43
 -- Generated from EDMX file: E:\Projects\TasksExpert2\TasksERP\Models\Tickets.edmx
 -- --------------------------------------------------
 
@@ -77,6 +77,26 @@ CREATE TABLE [dbo].[Accounts] (
 );
 GO
 
+-- Creating table 'TicketsHRs'
+CREATE TABLE [dbo].[TicketsHRs] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [Owner] nvarchar(max)  NOT NULL,
+    [CreationDate] nvarchar(max)  NOT NULL,
+    [StartingDate] nvarchar(max)  NULL,
+    [EndingDate] nvarchar(max)  NULL,
+    [ApprovedBy] nvarchar(max)  NULL,
+    [Subject] nvarchar(max)  NULL,
+    [Description] nvarchar(max)  NULL,
+    [Status] nvarchar(max)  NOT NULL,
+    [AssignedTo] nvarchar(max)  NULL,
+    [Team] nvarchar(max)  NULL,
+    [Comment] nvarchar(max)  NULL,
+    [ManagersComment] nvarchar(max)  NULL,
+    [Department] nvarchar(max)  NULL,
+    [Notes1] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -96,6 +116,12 @@ GO
 -- Creating primary key on [Id] in table 'Accounts'
 ALTER TABLE [dbo].[Accounts]
 ADD CONSTRAINT [PK_Accounts]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'TicketsHRs'
+ALTER TABLE [dbo].[TicketsHRs]
+ADD CONSTRAINT [PK_TicketsHRs]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

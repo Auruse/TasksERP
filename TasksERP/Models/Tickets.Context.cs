@@ -29,5 +29,6 @@ namespace TasksERP.Models
         public virtual DbSet<Tickets> Tickets { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         internal virtual DbSet<Accounts> Accounts { get; set; }
+        public virtual DbSet<TicketsHR> TicketsHRs { get; set; }
     }
 }

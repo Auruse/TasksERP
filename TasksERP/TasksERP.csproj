@@ -2781,6 +2781,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\HRController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ITController.cs" />
@@ -2806,6 +2807,9 @@
     <Compile Include="Models\Tickets1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>Tickets.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TicketsHR.cs">
       <DependentUpon>Tickets.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TicketsViewModel.cs" />
@@ -3122,6 +3126,12 @@
     <Content Include="Views\Shared\_LayoutLogin.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Views\HR\Main.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Views\HR\Details.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3132,7 +3142,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\AccountsPayable\" />
-    <Folder Include="Views\HR\" />
     <Folder Include="Views\PR\" />
   </ItemGroup>
   <ItemGroup>
