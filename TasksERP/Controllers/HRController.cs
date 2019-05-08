@@ -26,7 +26,6 @@ namespace TasksERP.Controllers
         [HttpGet]
         public ActionResult NewTaskHR()
         {
-
             return View();
         }
 

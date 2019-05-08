@@ -13,7 +13,7 @@
                         <div class="col-md-6">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Обращение в ИТ отдел</h4>
+                                    <h4 class="card">Обращение в ИТ отдел</h4>
                                     <p class="card-description">
                                         Создание обращения
                                     </p>
@@ -22,13 +22,13 @@
                                         <div class="form-group row">
                                             <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Заявитель</label>
                                             <div class="col-sm-9">
-                                                @Html.EditorFor(model => model.Owner, new { htmlAttributes = new { @class = "form-control", placeholder = "Your email" } })                                                
+                                                @Html.EditorFor(model => model.Owner, new { htmlAttributes = new { @class = "form-control", placeholder = "Ваш email" } })                                                
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="exampleInputPassword2" class="col-sm-3 col-form-label">Тема сообщения</label>
                                             <div class="col-sm-9">
-                                                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control", placeholder = "Problem Description In Brief" } })
+                                                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control", placeholder = "Краткое описание проблемы" } })
                                                
                                             </div>
                                         </div>
