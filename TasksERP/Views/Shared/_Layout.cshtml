@@ -27,21 +27,21 @@
         <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
             <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
                 @*<a class="navbar-brand brand-logo" href="index.html">
-                <img src="../../images/logo.svg" alt="logo" />
-            </a>*@
+                        <img src="../../images/logo.svg" alt="logo" />
+                    </a>*@
                 <a class="navbar-brand brand-logo-mini" href="index.html">
                     <img src="../../images/logo-mini.svg" alt="logo" />
                 </a>
             </div>
-            
+
             <div class="navbar-menu-wrapper d-flex align-items-center ">
                 <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
                     @{var urlPath = HttpContext.Current.Request.Url.AbsolutePath; }
 
-                    @{ if (urlPath.Contains("MyPage"))
+                    @{ if (urlPath.Contains("Home"))
                         {
                             <li id="3" class="nav-item active">
-                                <a href="@Url.Action("Main","MyPage")" class="nav-link">
+                                <a href="@Url.Action("Main", "Home")" class="nav-link">
                                     <i class="mdi mdi-home"></i>Кабинет
                                 </a>
                             </li>
@@ -49,17 +49,17 @@
                         else
                         {
                             <li id="3" class="nav-item">
-                                <a href="@Url.Action("Main","MyPage")" class="nav-link">
+                                <a href="@Url.Action("Main", "Home")" class="nav-link">
                                     <i class="mdi mdi-home"></i>Кабинет
                                 </a>
                             </li>
                         }
 
-                       
-                        if (urlPath.Contains("Home"))
+
+                        if (urlPath.Contains("Manager"))
                         {
                             <li id="1" class="nav-item active">
-                                <a href='@Url.Action("Main", "Home")' class="nav-link">
+                                <a href='@Url.Action("Main", "Manager")' class="nav-link">
                                     <i class="mdi mdi-elevation-rise"></i>Менеджер
                                 </a>
                             </li>
@@ -67,7 +67,7 @@
                         else
                         {
                             <li id="1" class="nav-item">
-                                <a href='@Url.Action("Main", "Home")' class="nav-link">
+                                <a href='@Url.Action("Main", "Manager")' class="nav-link">
                                     <i class="mdi mdi-elevation-rise"></i>Менеджер
                                 </a>
                             </li>
@@ -109,107 +109,107 @@
                     }
 
                 </ul>
-                 
-                    <ul class="navbar-nav navbar-nav-right">
 
-                        <li class="nav-item dropdown">
-                            <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                                <i class="mdi mdi-file-document-box"></i>
-                                <span class="count">7</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
-                                <div class="dropdown-item">
-                                    <p class="mb-0 font-weight-normal float-left">
-                                        7 новых сообщений
-                                    </p>
-                                    <span class="badge badge-info badge-pill float-right">Открыть все</span>
+                <ul class="navbar-nav navbar-nav-right">
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <i class="mdi mdi-file-document-box"></i>
+                            <span class="count">7</span>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="messageDropdown">
+                            <div class="dropdown-item">
+                                <p class="mb-0 font-weight-normal float-left">
+                                    7 новых сообщений
+                                </p>
+                                <span class="badge badge-info badge-pill float-right">Открыть все</span>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <img src="../../images/faces/face4.jpg" alt="image" class="profile-pic">
                                 </div>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <img src="../../images/faces/face4.jpg" alt="image" class="profile-pic">
-                                    </div>
-                                    <div class="preview-item-content flex-grow">
-                                        <h6 class="preview-subject ellipsis font-weight-medium text-dark">
-                                            Давид Горнов
-                                            <span class="float-right font-weight-light small-text">1 мин. назад</span>
-                                        </h6>
-                                        <p class="font-weight-light small-text">
-                                           Заявление на отпуск: 27/05/19-10/06/19
-                                        </p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <img src="../../images/faces/face2.jpg" alt="image" class="profile-pic">
-                                    </div>
-                                    <div class="preview-item-content flex-grow">
-                                        <h6 class="preview-subject ellipsis font-weight-medium text-dark">
-                                            Галина Ли
-                                            <span class="float-right font-weight-light small-text">15 мин. назад</span>
-                                        </h6>
-                                        <p class="font-weight-light small-text">
-                                            Положение о закупках - 2019. Ждем Ваше одобрение.
-                                        </p>
-                                    </div>
-                                </a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item preview-item">
-                                    <div class="preview-thumbnail">
-                                        <img src="../../images/faces/face3.jpg" alt="image" class="profile-pic">
-                                    </div>
-                                    <div class="preview-item-content flex-grow">
-                                        <h6 class="preview-subject ellipsis font-weight-medium text-dark">
-                                            Крис Вандельберг
-                                            <span class="float-right font-weight-light small-text">18 ч. назад </span>
-                                        </h6>
-                                        <p class="font-weight-light small-text">
-                                            Договор с АО "ГринАтом". Ждем Вашей подписи.
-                                        </p>
-                                    </div>
-                                </a>
-                            </div>
-                        </li>
-                      
-                        <li class="nav-item dropdown d-none d-xl-inline-block">
-                            <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                                <span class="profile-text">Сергей M. Иванов</span>
-                                <img class="img-xs rounded-circle" src="../../images/faces/face1.jpg" alt="Profile image">
+                                <div class="preview-item-content flex-grow">
+                                    <h6 class="preview-subject ellipsis font-weight-medium text-dark">
+                                        Давид Горнов
+                                        <span class="float-right font-weight-light small-text">1 мин. назад</span>
+                                    </h6>
+                                    <p class="font-weight-light small-text">
+                                        Заявление на отпуск: 27/05/19-10/06/19
+                                    </p>
+                                </div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                                <a class="dropdown-item p-0">
-                                    <div class="d-flex border-bottom">
-                                        <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                                            <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
-                                        </div>
-                                        <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
-                                            <i class="mdi mdi-account-outline mr-0 text-gray"></i>
-                                        </div>
-                                        <div class="py-3 px-4 d-flex align-items-center justify-content-center">
-                                            <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
-                                        </div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <img src="../../images/faces/face2.jpg" alt="image" class="profile-pic">
+                                </div>
+                                <div class="preview-item-content flex-grow">
+                                    <h6 class="preview-subject ellipsis font-weight-medium text-dark">
+                                        Галина Ли
+                                        <span class="float-right font-weight-light small-text">15 мин. назад</span>
+                                    </h6>
+                                    <p class="font-weight-light small-text">
+                                        Положение о закупках - 2019. Ждем Ваше одобрение.
+                                    </p>
+                                </div>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item preview-item">
+                                <div class="preview-thumbnail">
+                                    <img src="../../images/faces/face3.jpg" alt="image" class="profile-pic">
+                                </div>
+                                <div class="preview-item-content flex-grow">
+                                    <h6 class="preview-subject ellipsis font-weight-medium text-dark">
+                                        Крис Вандельберг
+                                        <span class="float-right font-weight-light small-text">18 ч. назад </span>
+                                    </h6>
+                                    <p class="font-weight-light small-text">
+                                        Договор с АО "ГринАтом". Ждем Вашей подписи.
+                                    </p>
+                                </div>
+                            </a>
+                        </div>
+                    </li>
+
+                    <li class="nav-item dropdown d-none d-xl-inline-block">
+                        <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
+                            <span class="profile-text">Сергей M. Иванов</span>
+                            <img class="img-xs rounded-circle" src="../../images/faces/face1.jpg" alt="Profile image">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
+                            <a class="dropdown-item p-0">
+                                <div class="d-flex border-bottom">
+                                    <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                                        <i class="mdi mdi-bookmark-plus-outline mr-0 text-gray"></i>
                                     </div>
-                                </a>
-                                <a class="dropdown-item mt-2">
-                                    Профайл
-                                </a>
-                                <a class="dropdown-item">
-                                    Смена пароля
-                                </a>
-                                <a class="dropdown-item">
-                                    Проверить почту
-                                </a>
-                                <a class="dropdown-item" onclick="location.href='@Url.Action("Exit", "Home")'">
-                                    Выйти
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
-                        <span class="mdi mdi-menu"></span>
-                    </button>
-</div>
+                                    <div class="py-3 px-4 d-flex align-items-center justify-content-center border-left border-right">
+                                        <i class="mdi mdi-account-outline mr-0 text-gray"></i>
+                                    </div>
+                                    <div class="py-3 px-4 d-flex align-items-center justify-content-center">
+                                        <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
+                                    </div>
+                                </div>
+                            </a>
+                            <a class="dropdown-item mt-2">
+                                Профайл
+                            </a>
+                            <a class="dropdown-item">
+                                Смена пароля
+                            </a>
+                            <a class="dropdown-item">
+                                Проверить почту
+                            </a>
+                            <a class="dropdown-item" onclick="location.href='@Url.Action("Exit", "Home")'">
+                                Выйти
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+                <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                    <span class="mdi mdi-menu"></span>
+                </button>
+            </div>
         </nav>
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
@@ -241,30 +241,64 @@
                     <i class="mdi mdi-plus"></i>
                 </button>*@
                         </div>
-                    </li>                   
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("NewTask", "HR")">
-                            <i class="menu-icon mdi mdi-beach"></i>
-                            <span class="menu-title">Заявление на отпуск</span>
-                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
-                            <i class="menu-icon mdi mdi-medical-bag"></i>
-                            <span class="menu-title">Больничный</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-item">
-                            <hr />
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("NewTask", "IT")">
-                            <i class="menu-icon mdi mdi-spotify"></i>
-                            <span class="menu-title">Обратиться в ИТ</span>
-                        </a>
-                    </li>
+                    @{ if (urlPath.Contains("NewTaskHR") && urlPath.Contains("HR"))
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                                    <i class="menu-icon mdi mdi-beach"></i>
+                                    <span class="menu-title">Заявление на отпуск</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                                    <i class="menu-icon mdi mdi-beach"></i>
+                                    <span class="menu-title">Заявление на отпуск</span>
+                                </a>
+                            </li>
+                        }
+                        if (urlPath.Contains("NewTaskSickLeave") && urlPath.Contains("HR"))
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
+                                    <i class="menu-icon mdi mdi-medical-bag"></i>
+                                    <span class="menu-title">Больничный</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
+                                    <i class="menu-icon mdi mdi-medical-bag"></i>
+                                    <span class="menu-title">Больничный</span>
+                                </a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <hr />  
+                        </li>
+                        if (urlPath.Contains("NewTaskIT") && urlPath.Contains("IT"))
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" href="@Url.Action("NewTaskIT", "IT")">
+                                    <i class="menu-icon mdi mdi-spotify"></i>
+                                    <span class="menu-title">Обратиться в ИТ</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("NewTaskIT", "IT")">
+                                    <i class="menu-icon mdi mdi-spotify"></i>
+                                    <span class="menu-title">Обратиться в ИТ</span>
+                                </a>
+                            </li>
+                        } }
 
                 </ul>
             </nav>
@@ -272,7 +306,7 @@
         </div>
     </div>
     <!-- container-scroller -->
-     
+
     <script src=@Url.Content("~/vendors/js/vendor.bundle.base.js")></script>
     <script src=@Url.Content("~/vendors/js/vendor.bundle.addons.js")></script>
     <!-- endinject -->

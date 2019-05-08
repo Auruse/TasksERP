@@ -29,14 +29,14 @@ namespace TasksERP.Controllers
             return RedirectToAction("Index", "Home");
         }
         [HttpGet]
-        public ActionResult NewTask()
+        public ActionResult NewTaskIT()
         {
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult NewTask(Tickets TicketData)
+        public ActionResult NewTaskIT(Tickets TicketData)
         {
             TicketData.Status = "New";
             TicketData.CreationDate = DateTime.Now.ToString();
@@ -44,7 +44,7 @@ namespace TasksERP.Controllers
             db.Tickets.Add(TicketData);
             db.SaveChanges();
 
-            return RedirectToAction("Main", "IT");
+            return RedirectToAction("Main", "Home");
         }
         public ActionResult GetTicket(int? id)
         {

@@ -10,8 +10,7 @@ namespace TasksERP.Controllers
         TicketsContainer db = new TicketsContainer();
         // GET: Home
         public ActionResult Index()
-        {
-            
+        {       
            
 
             return View();
@@ -19,11 +18,11 @@ namespace TasksERP.Controllers
          
         public ActionResult Main()
         {
-            ViewBag.TicketsTotal = db.Tickets.Count()>0 ? db.Tickets.Count()  : 0;
-            ViewBag.TicketsClosed = db.Tickets.Count() > 0 ? db.Tickets.Count(x=>x.Status=="Closed") : 0;
-            ViewBag.TicketsInProgress = db.Tickets.Count() > 0 ? db.Tickets.Count(x => x.Status == "In Progress") : 0;
-            ViewBag.TicketsNew = db.Tickets.Count() > 0 ? db.Tickets.Count(x => x.Status == "New") : 0;
-            return View(db.Tickets);
+            //ViewBag.TicketsTotal = db.Tickets.Count()>0 ? db.Tickets.Count()  : 0;
+            //ViewBag.TicketsClosed = db.Tickets.Count() > 0 ? db.Tickets.Count(x=>x.Status=="Closed") : 0;
+            //ViewBag.TicketsInProgress = db.Tickets.Count() > 0 ? db.Tickets.Count(x => x.Status == "In Progress") : 0;
+            //ViewBag.TicketsNew = db.Tickets.Count() > 0 ? db.Tickets.Count(x => x.Status == "New") : 0;
+            return View();
         }
          
         public ActionResult Exit()

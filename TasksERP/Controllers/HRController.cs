@@ -24,22 +24,22 @@ namespace TasksERP.Controllers
             return View(db.TicketsHRs);
         }
         [HttpGet]
-        public ActionResult NewTask()
+        public ActionResult NewTaskHR()
         {
 
             return View();
         }
 
         [HttpPost]
-        public ActionResult NewTask(TicketsHR TicketData)
+        public ActionResult NewTaskHR(TicketsHR TicketData)
         {
             TicketData.Status = "New";
-            TicketData.CreationDate = DateTime.Now.ToString();
+            TicketData.CreationDate = DateTime.Now.ToString("dd.MM.yyyy");
             
             db.TicketsHRs.Add(TicketData);
             db.SaveChanges();
 
-            return RedirectToAction("Main", "MyPage");
+            return RedirectToAction("Main", "Home");
         }
         [HttpGet]
         public ActionResult NewTaskSickLeave()
@@ -58,7 +58,7 @@ namespace TasksERP.Controllers
                 db.TicketsHRs.Add(TicketDataHR);
                 db.SaveChanges();
              
-            return RedirectToAction("Main", "MyPage");
+            return RedirectToAction("Main", "Home");
         }
         public ActionResult Exit()
         {

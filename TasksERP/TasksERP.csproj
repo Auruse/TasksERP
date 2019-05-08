@@ -153,6 +153,9 @@
     <Content Include="images\favicon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="images\file-icons\icon-google.svg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\flags\AD.png" />
     <Content Include="images\flags\AE.png" />
     <Content Include="images\flags\AG.png" />
@@ -2767,7 +2770,7 @@
     <Content Include="vendors\tinymce\tinymce.jquery.min.js" />
     <Content Include="vendors\tinymce\tinymce.js" />
     <Content Include="vendors\tinymce\tinymce.min.js" />
-    <Content Include="Views\Home\Main.cshtml">
+    <Content Include="Views\Manager\Main.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\Home\Index.cshtml">
@@ -2781,10 +2784,10 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\MyPageController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HRController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ManagerController.cs" />
     <Compile Include="Controllers\ITController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -3103,13 +3106,13 @@
     <Content Include="vendors\tinymce\skins\lightgray\fonts\tinymce.eot" />
     <Content Include="vendors\tinymce\skins\lightgray\fonts\tinymce.ttf" />
     <Content Include="vendors\tinymce\skins\lightgray\fonts\tinymce.woff" />
-    <Content Include="Views\Home\NewTask.cshtml">
+    <Content Include="Views\Manager\NewTask.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Home\Details.cshtml">
+    <Content Include="Views\Manager\Details.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\IT\NewTask.cshtml">
+    <Content Include="Views\IT\NewTaskIT.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\IT\Main.cshtml">
@@ -3133,10 +3136,10 @@
     <Content Include="Views\HR\Details.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\MyPage\Main.cshtml">
+    <Content Include="Views\Home\Main.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\HR\NewTask.cshtml">
+    <Content Include="Views\HR\NewTaskHR.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\HR\NewTaskSickLeave.cshtml">
