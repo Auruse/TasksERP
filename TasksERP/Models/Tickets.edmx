@@ -44,7 +44,7 @@
           <Property Name="ApprovedBy" Type="nvarchar(max)" />
           <Property Name="Subject" Type="nvarchar(max)" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="nvarchar(max)" />
           <Property Name="AssignedTo" Type="nvarchar(max)" />
           <Property Name="Team" Type="nvarchar(max)" />
           <Property Name="Comment" Type="nvarchar(max)" />
@@ -58,19 +58,19 @@
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Owner" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="CreationDate" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="CreationDate" Type="nvarchar(max)" />
           <Property Name="StartingDate" Type="nvarchar(max)" />
           <Property Name="EndingDate" Type="nvarchar(max)" />
           <Property Name="ApprovedBy" Type="nvarchar(max)" />
           <Property Name="Subject" Type="nvarchar(max)" />
           <Property Name="Description" Type="nvarchar(max)" />
-          <Property Name="Status" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Status" Type="nvarchar(max)" />
           <Property Name="AssignedTo" Type="nvarchar(max)" />
           <Property Name="Team" Type="nvarchar(max)" />
           <Property Name="Comment" Type="nvarchar(max)" />
           <Property Name="ManagersComment" Type="nvarchar(max)" />
           <Property Name="Department" Type="nvarchar(max)" />
-          <Property Name="Notes1" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Notes1" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -179,19 +179,19 @@
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Owner" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="CreationDate" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CreationDate" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="StartingDate" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="EndingDate" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ApprovedBy" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Subject" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Description" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Status" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Status" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="AssignedTo" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Team" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Comment" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="ManagersComment" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Department" Type="String" Nullable="true" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Notes1" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Notes1" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

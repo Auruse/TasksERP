@@ -5,23 +5,30 @@ using TasksERP.Models;
 
 namespace TasksERP.Controllers
 {
-    public class HRController : Controller
+    public class MyPageController : Controller
     {
-        // GET: IT        
         TicketsContainer db = new TicketsContainer();
         // GET: Home
         public ActionResult Index()
-        {
+        {       
+           
+
             return View();
         }
-
+         
         public ActionResult Main()
         {
-            ViewBag.TicketsTotal = db.TicketsHRs.Count() > 0 ? db.TicketsHRs.Count() : 0;
-            ViewBag.TicketsClosed = db.TicketsHRs.Count() > 0 ? db.TicketsHRs.Count(x => x.Status == "Closed") : 0;
-            ViewBag.TicketsInProgress = db.TicketsHRs.Count() > 0 ? db.TicketsHRs.Count(x => x.Status == "In Progress") : 0;
-            ViewBag.TicketsNew = db.TicketsHRs.Count() > 0 ? db.TicketsHRs.Count(x => x.Status == "New") : 0;
-            return View(db.TicketsHRs);
+            //ViewBag.TicketsTotal = db.Tickets.Count()>0 ? db.Tickets.Count()  : 0;
+            //ViewBag.TicketsClosed = db.Tickets.Count() > 0 ? db.Tickets.Count(x=>x.Status=="Closed") : 0;
+            //ViewBag.TicketsInProgress = db.Tickets.Count() > 0 ? db.Tickets.Count(x => x.Status == "In Progress") : 0;
+            //ViewBag.TicketsNew = db.Tickets.Count() > 0 ? db.Tickets.Count(x => x.Status == "New") : 0;
+            return View();
+        }
+         
+        public ActionResult Exit()
+        {
+
+            return View("Index");
         }
         [HttpGet]
         public ActionResult NewTask()
@@ -31,68 +38,45 @@ namespace TasksERP.Controllers
         }
 
         [HttpPost]
-        public ActionResult NewTask(TicketsHR TicketData)
+        public ActionResult NewTask(Tickets TicketData)
         {
-            TicketData.Status = "New";
-            TicketData.CreationDate = DateTime.Now.ToString();
+            if (!string.IsNullOrEmpty(TicketData.Comment))
+                {
+                TicketData.Status = "New";
+                TicketData.CreationDate = DateTime.Now.ToString();
+
+                db.Tickets.Add(TicketData);
+                db.SaveChanges(); };
             
-            db.TicketsHRs.Add(TicketData);
-            db.SaveChanges();
-
-            return RedirectToAction("Main", "MyPage");
+            return RedirectToAction("Main");
         }
-        [HttpGet]
-        public ActionResult NewTaskSickLeave()
-        {
-
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult NewTaskSickLeave(TicketsHR TicketDataHR)
-        {
-            TicketDataHR.Status = "New";
-            TicketDataHR.CreationDate = DateTime.Now.ToString("dd.MM.yyyy");
-            TicketDataHR.Subject = "Больничный";             
-            
-                db.TicketsHRs.Add(TicketDataHR);
-                db.SaveChanges();
-             
-            return RedirectToAction("Main", "MyPage");
-        }
-        public ActionResult Exit()
-        {
-
-            return RedirectToAction("Index", "Home");
-        }
-        
         public ActionResult GetTicket(int? id)
         {
             if (id.HasValue)
             {
-                TicketsHR t = db.TicketsHRs.Find(id);
+            Tickets t = db.Tickets.Find(id);
                 t.Status = "In Progress";
                 t.AssignedTo = "consultant01@test.ru";
-                
+                t.AssignmentDate=DateTime.Now.ToString();
                 db.SaveChanges();
             }
+             
 
-
-            return RedirectToAction("Main", "HR");
+            return RedirectToAction("Main");
         }
         public ActionResult Close(int? id)
         {
             if (id.HasValue)
             {
-                TicketsHR t = db.TicketsHRs.Find(id);
+                Tickets t = db.Tickets.Find(id);
                 t.Status = "Closed";
-
                 
+                t.ClosureDate = DateTime.Now.ToString();
                 db.SaveChanges();
             }
 
 
-            return RedirectToAction("Main", "HR");
+            return RedirectToAction("Main");
         }
         public ActionResult Reply(int? id)
         {
@@ -106,7 +90,7 @@ namespace TasksERP.Controllers
             //}
 
 
-            return RedirectToAction("Main", "HR");
+            return RedirectToAction("Main");
         }
         public ActionResult Redirect(int? id)
         {
@@ -120,46 +104,46 @@ namespace TasksERP.Controllers
             //}
 
 
-            return RedirectToAction("Main", "HR");
+            return RedirectToAction("Main");
         }
         [HttpGet]
         public ActionResult Details(int? id)
         {
-            TicketsHR t = new TicketsHR();
+            Tickets t = new Tickets();
             if (id.HasValue)
             {
-                t = db.TicketsHRs.Find(id);
-                ViewBag.TicketsTotal = db.TicketsHRs.Count();
+                t = db.Tickets.Find(id);
+                ViewBag.TicketsTotal = db.Tickets.Count();
             }
             else
             {
                 ViewBag.TicketsTotal = 0;
-                return RedirectToAction("Main", "HR");
+                return RedirectToAction("Main");
             }
 
             return View(t);
         }
         public ActionResult Delete(int? id)
         {
-            TicketsHR t = new TicketsHR();
+            Tickets t = new Tickets();
             if (id.HasValue)
             {
-                t = db.TicketsHRs.Find(id);
-                db.TicketsHRs.Remove(t);
+                t = db.Tickets.Find(id);
+                db.Tickets.Remove(t);
                 db.SaveChanges();
             }
-
-            return RedirectToAction("Main", "HR");
-
+            
+          return RedirectToAction("Main");
+             
         }
         [HttpPost]
-        public ActionResult Details(TicketsHR TicketData)
+        public ActionResult Details(Tickets TicketData)
         {
             if (TicketData.Notes1 != null)
             {
-                TicketsHR t = new TicketsHR();
+                Tickets t = new Tickets();
 
-                t = db.TicketsHRs.Find(TicketData.Id);
+                t = db.Tickets.Find(TicketData.Id);
                 var CommentText = TicketData.Notes1.Replace("\n", "</br>");
 
                 t.Comment += $"<div class='row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3'>" +
@@ -169,7 +153,7 @@ namespace TasksERP.Controllers
 
                 db.SaveChanges();
             }
-            return RedirectToAction("Main", "HR");
+            return RedirectToAction("Main");
         }
     }
 }

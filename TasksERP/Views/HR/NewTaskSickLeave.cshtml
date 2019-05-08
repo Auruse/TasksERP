@@ -1,0 +1,64 @@
+﻿@model TasksERP.Models.TicketsHR
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ 
+
+            <div class="main-panel">
+                <div class="content-wrapper">
+ 
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="card-description">
+                                        Сообщить о получении больничного листа
+                                    </p>
+                                    <hr />
+                                    <form class="forms-sample">
+                                        <div class="form-group row">
+                                            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Заявитель</label>
+                                            <div class="col-sm-9">
+                                                @Html.EditorFor(model => model.Owner, new { htmlAttributes = new { @class = "form-control", placeholder = "Your email" } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="leaveReason" class="col-sm-3 col-form-label">Причина отсутствия:</label>
+                                            <div class="col-sm-9">
+                                                @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control", @Value = "Больничный" } })
+
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Дата начала:</label>
+                                            <div class="col-sm-9">                                                
+                                                @Html.EditorFor(model => model.StartingDate, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("dd.MM.yyyy") } })
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Дата окончания:</label>
+                                            <div class="col-sm-9">                                                
+                                                @Html.EditorFor(model => model.EndingDate, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.AddDays(1).ToString("dd.MM.yyyy")} })
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleTextarea1">Сообщение <i class="text-muted">(можно не заполнять)</i></label>
+                                            @Html.TextAreaFor(model => model.Description, new { @class = "form-control", rows = "12", id = "exampleTextarea1" })
+
+                                        </div>
+                                        <button type="submit" class="btn btn-outline-success mr-xl-5">Отправить</button>
+                                        <button class="btn btn-light">Отменить</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                    </div>
+                <!-- content-wrapper ends -->
+                <!-- partial:partials/_footer.html -->
+               
+                <!-- partial -->
+            </div>
+            

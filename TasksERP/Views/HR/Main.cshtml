@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<TasksERP.Models.Tickets>
+﻿@model  IEnumerable<TasksERP.Models.TicketsHR>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -16,14 +16,14 @@
                                 <i class="mdi mdi-cube text-danger icon-lg"></i>
                             </div>
                             <div class="float-right">
-                                <p class="mb-0 text-right">Всего заявлений</p>
+                                <p class="mb-0 text-right">Заявлений</p>
                                 <div class="fluid-container">
                                     <h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsTotal</h3>
                                 </div>
                             </div>
                         </div>
                         <p class="text-muted mt-3 mb-0">
-                            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> на 6% больше, чем вчера
+                            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i>все заявления на @DateTime.Now.ToString("dd.MM.yyyy")  
                         </p>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
                                 <i class="mdi mdi-receipt text-warning icon-lg"></i>
                             </div>
                             <div class="float-right">
-                                <p class="mb-0 text-right">Новые</p>
+                                <p class="mb-0 text-right">Новых</p>
                                 <div class="fluid-container">
                                     <h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsNew</h3>
                                 </div>
@@ -56,14 +56,14 @@
                                 <i class="mdi mdi-poll-box text-success icon-lg"></i>
                             </div>
                             <div class="float-right">
-                                <p class="mb-0 text-right">Выполняются</p>
+                                <p class="mb-0 text-right">В работе</p>
                                 <div class="fluid-container">
                                     <h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsInProgress</h3>
                                 </div>
                             </div>
                         </div>
                         <p class="text-muted mt-3 mb-0">
-                            <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i>назначены
+                            <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i>назначен исполнитель
                         </p>
                     </div>
                 </div>

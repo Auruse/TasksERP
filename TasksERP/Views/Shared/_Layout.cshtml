@@ -38,7 +38,25 @@
                 <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
                     @{var urlPath = HttpContext.Current.Request.Url.AbsolutePath; }
 
-                    @{ if (urlPath.Contains("Home"))
+                    @{ if (urlPath.Contains("MyPage"))
+                        {
+                            <li id="3" class="nav-item active">
+                                <a href="@Url.Action("Main","MyPage")" class="nav-link">
+                                    <i class="mdi mdi-home"></i>Кабинет
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li id="3" class="nav-item">
+                                <a href="@Url.Action("Main","MyPage")" class="nav-link">
+                                    <i class="mdi mdi-home"></i>Кабинет
+                                </a>
+                            </li>
+                        }
+
+                       
+                        if (urlPath.Contains("Home"))
                         {
                             <li id="1" class="nav-item active">
                                 <a href='@Url.Action("Main", "Home")' class="nav-link">
@@ -54,7 +72,7 @@
                                 </a>
                             </li>
                         }
-                       
+
                         if (urlPath.Contains("HR"))
                         {
                             <li id="3" class="nav-item active">
@@ -209,14 +227,43 @@
                                     <div>
                                         <small class="designation text-muted">Менеджер</small>
                                         <span class="status-indicator online"></span>
+                                        <hr />
+                                        <small class="designation text-behance">Остаток отпуска: 14 дней</small>
                                     </div>
                                 </div>
                             </div>
-                            <button class="btn btn-success btn-block" onclick="location.href='@Url.Action("NewTask", "Home")'">
-                                Новая задача
-                                <i class="mdi mdi-plus"></i>
-                            </button>
+                            @*<button class="btn btn-success btn-block" onclick="location.href='@Url.Action("NewTask", "Home")'">
+                    Заявление на отпуск
+                    <i class="mdi mdi-plus"></i>
+                </button>
+                <button class="btn btn-success btn-block" onclick="location.href='@Url.Action("NewTask", "Home")'">
+                    Запрос в ИТ
+                    <i class="mdi mdi-plus"></i>
+                </button>*@
                         </div>
+                    </li>                   
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("NewTask", "HR")">
+                            <i class="menu-icon mdi mdi-beach"></i>
+                            <span class="menu-title">Заявление на отпуск</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
+                            <i class="menu-icon mdi mdi-medical-bag"></i>
+                            <span class="menu-title">Больничный</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-item">
+                            <hr />
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("NewTask", "IT")">
+                            <i class="menu-icon mdi mdi-spotify"></i>
+                            <span class="menu-title">Обратиться в ИТ</span>
+                        </a>
                     </li>
 
                 </ul>
