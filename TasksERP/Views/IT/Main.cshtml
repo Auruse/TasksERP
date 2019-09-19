@@ -1,4 +1,4 @@
-﻿@model  IEnumerable<TasksERP.Models.Tickets>
+﻿@model  IEnumerable<TasksERP.TicketsArchive>
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -6,93 +6,93 @@
 
 <div class="main-panel">
     <div class="content-wrapper">
+        <div class="card">
+            <div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                    <div class="card card-statistics">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <i class="mdi mdi-cube text-danger icon-lg"></i>
+                                </div>
+                                <div class="float-right">
+                                    <p class="mb-0 text-right">Всего заявок</p>
+                                    <div class="fluid-container">
+                                        <h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsTotal</h3>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> на 65% больше, чем вчера
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                    <div class="card card-statistics">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <i class="mdi mdi-receipt text-warning icon-lg"></i>
+                                </div>
+                                <div class="float-right">
+                                    <p class="mb-0 text-right">Новых</p>
+                                    <div class="fluid-container">
+                                        <a href="@Url.Action("Main", "IT", new { GetWithStatus = "New" })"><h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsNew</h3></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i>без испольнителя
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                    <div class="card card-statistics">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <i class="mdi mdi-poll-box text-success icon-lg"></i>
+                                </div>
+                                <div class="float-right">
+                                    <p class="mb-0 text-right">Выполняются</p>
+                                    <div class="fluid-container">
+                                        <a href="@Url.Action("Main", "IT", new { GetWithStatus = "Assigned" })"><h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsInProgress</h3></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i>назначены
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                    <div class="card card-statistics">
+                        <div class="card-body">
+                            <div class="clearfix">
+                                <div class="float-left">
+                                    <i class="mdi mdi-account-location text-info icon-lg"></i>
+                                </div>
+                                <div class="float-right">
+                                    <p class="mb-0 text-right">Закрыты</p>
+                                    <div class="fluid-container">
+                                        <a href="@Url.Action("Main", "IT", new { GetWithStatus = "Closed" })"><h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsClosed</h3></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> последняя заявка закрыта сегодня в 10.09
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+         </div>
+            <div class="row">
 
-        <div class="row">
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics">
-                    <div class="card-body">
-                        <div class="clearfix">
-                            <div class="float-left">
-                                <i class="mdi mdi-cube text-danger icon-lg"></i>
-                            </div>
-                            <div class="float-right">
-                                <p class="mb-0 text-right">Всего заявок</p>
-                                <div class="fluid-container">
-                                    <h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsTotal</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-muted mt-3 mb-0">
-                            <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> на 65% больше, чем вчера
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics">
-                    <div class="card-body">
-                        <div class="clearfix">
-                            <div class="float-left">
-                                <i class="mdi mdi-receipt text-warning icon-lg"></i>
-                            </div>
-                            <div class="float-right">
-                                <p class="mb-0 text-right">Новых</p>
-                                <div class="fluid-container">
-                                    <h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsNew</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-muted mt-3 mb-0">
-                            <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i>без испольнителя
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics">
-                    <div class="card-body">
-                        <div class="clearfix">
-                            <div class="float-left">
-                                <i class="mdi mdi-poll-box text-success icon-lg"></i>
-                            </div>
-                            <div class="float-right">
-                                <p class="mb-0 text-right">Выполняются</p>
-                                <div class="fluid-container">
-                                    <h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsInProgress</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-muted mt-3 mb-0">
-                            <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i>назначены
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
-                <div class="card card-statistics">
-                    <div class="card-body">
-                        <div class="clearfix">
-                            <div class="float-left">
-                                <i class="mdi mdi-account-location text-info icon-lg"></i>
-                            </div>
-                            <div class="float-right">
-                                <p class="mb-0 text-right">Закрыты</p>
-                                <div class="fluid-container">
-                                    <h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsClosed</h3>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-muted mt-3 mb-0">
-                            <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> последняя заявка закрыта сегодня в 10.09
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            
-                <div class="col-lg-6 grid-margin stretch-card">
+                <div class="col-lg-3 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
 
@@ -106,23 +106,40 @@
                                     </div>
                                 </div>
                             </div>
-                            <h4 class="card-title">Статистика</h4>
+                            <h4 class="card">Статистика запросов</h4>
                             <canvas id="areaChart" style="height: 182px; display: block; width: 364px;" width="364" height="182" class="chartjs-render-monitor"></canvas>
 
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 grid-margin stretch-card">
+                <div class="col-lg-3 grid-margin stretch-card">
                     <div class="card">
                         <div class="card-body">
                             <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                            <h4 class="card-title">По департаментам</h4>
+                            <h4 class="card">Запросы по клиентам</h4>
                             <canvas id="doughnutChart" style="height: 182px; display: block; width: 364px;" width="364" height="182" class="chartjs-render-monitor"></canvas>
                         </div>
                     </div>
                 </div>
-            
-        </div>
+                <div class="col-lg-3 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                            <h4 class="card">Запросы по видам задач</h4>
+                            <canvas id="scatterChart" style="height: 182px; display: block; width: 364px;" width="364" height="182" class="chartjs-render-monitor"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 grid-margin stretch-card">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                            <h4 class="card-title">Запросы по видам задач </h4>
+                            <canvas id="barChart" style="height: 182px; display: block; width: 364px;" width="364" height="182" class="chartjs-render-monitor"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 
             <div class="row">
@@ -131,74 +148,78 @@
                         <div class="card-body">
                             <h5 class="card-title mb-4">Заявки</h5>
                             <div class="fluid-container">
-                                @foreach (var rec in Model)
-                                {
-                                    <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
-                                        <div class="col-md-1">
-                                            <img class="img-sm rounded-circle mb-4 mb-md-0" src="../../images/faces/face1.jpg" alt="profile image">
-                                        </div>
-                                        <div class="ticket-details col-md-9">
-                                            <a class="d-flex" href="@Url.Action("Details","IT", new { id = rec.Id })">
-                                                <p class="text-primary mr-1 mb-0">[#@rec.Id]</p>
-                                                <p class="text-dark font-weight-semibold mr-2 mb-0 no-wrap">@rec.Owner</p>
-                                                <p class="mb-0 ellipsis"> Тема: @rec.Subject</p>
-
-                                            </a>
-
-                                            <p class="text-gray ellipsis mb-2">
-                                                @rec.Description
-                                            </p>
-                                            <div class="row text-gray d-md-flex d-none">
-                                                <div class="col-4 d-flex">
-
-                                                    @if (rec.Status.ToLower() == "in progress")
-                                                    {
-                                                        <small class="mb-0 mr-2 text-muted text-muted">Назначена: </small>
-                                                        <small class="Last-responded mr-2 mb-0 text-muted text-muted">@rec.AssignedTo </small>}
-
-                                                    else
-                                                    {
-                                                        <small class="Last-responded mr-2 mb-0 text-muted text-muted">@rec.Status</small>
-                                                    }
+                                @{if (Model != null)
+                                    {
+                                        foreach (var rec in Model)
+                                        {
+                                            <div class="row ticket-card mt-3 pb-2 border-bottom pb-3 mb-3">
+                                                <div class="col-md-1">
+                                                    <img class="img-sm rounded-circle mb-4 mb-md-0" src=@Html.Raw("https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email=" + (@rec.Owner.Contains(";") ? rec.Owner.Split(';')[0] : rec.Owner) + "&UA=0&size=HR64x64") alt="profile image">
                                                 </div>
-                                                <div class="col-4 d-flex">
-                                                    <small class="mb-0 mr-2 text-muted text-muted">Создана:</small>
-                                                    <small class="Last-responded mr-2 mb-0 text-muted text-muted">@rec.CreationDate</small>
+                                                <div class="ticket-details col-md-9">
+                                                    <a class="d-flex" href="@Url.Action("Details", "IT", new { id = rec.Id })">
+                                                        <p class="text-primary mr-1 mb-0">[#@rec.Id]</p>
+                                                        <p class="text-dark font-weight-semibold mr-2 mb-0 no-wrap">@rec.Subject</p>
+                                                        <p class="mb-0 ellipsis">@rec.Owner</p>
+
+                                                    </a>
+
+                                                    <p class="text-gray ellipsis mb-2">
+                                                        @*@Html.Raw(rec.Description.Substring(0,100))*@
+                                                    </p>
+                                                    <div class="row text-gray d-md-flex d-none">
+                                                        <div class="col-4 d-flex">
+
+                                                            @if (rec.Status.ToLower() == "in progress")
+                                                            {
+                                                                <small class="mb-0 mr-2 text-muted text-muted">Назначена: </small>
+                                                                <small class="Last-responded mr-2 mb-0 text-muted text-muted">@rec.AssignedTo </small>}
+
+                                                            else
+                                                            {
+                                                                <small class="Last-responded mr-2 mb-0 text-muted text-muted">@rec.Status</small>
+                                                            }
+                                                        </div>
+                                                        <div class="col-4 d-flex">
+                                                            <small class="mb-0 mr-2 text-muted text-muted">Создана:</small>
+                                                            <small class="Last-responded mr-2 mb-0 text-muted text-muted">@rec.DateCreated</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="ticket-actions col-md-2">
+                                                    <div class="btn-group dropdown">
+                                                        <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                            Действия
+                                                        </button>
+                                                        <div class="dropdown-menu">
+                                                            <a class="dropdown-item" href="@Url.Action("Reply", "IT", new { id = rec.Id })">
+                                                                <i class="fa fa-reply fa-fw"></i>Ответить
+                                                            </a>
+                                                            @if (rec.Status == "New")
+                                                            {
+                                                                <a class="dropdown-item" href="@Url.Action("GetTicket", "IT", new { id = rec.Id })">
+                                                                    <i class="fa fa-history fa-fw"></i>Взять заявку
+                                                                </a>
+                                                            }
+                                                            <div class="dropdown-divider"></div>
+                                                            <a class="dropdown-item" href="@Url.Action("Redirect", "IT", new { id = rec.Id })">
+                                                                <i class="fa fa-check text-success fa-fw"></i>Перенаправить
+                                                            </a>
+                                                            @if (rec.Status != "Closed")
+                                                            {
+                                                                <a class="dropdown-item" href="@Url.Action("Close", "IT", new { id = rec.Id })">
+                                                                    <i class="fa fa-times text-danger fa-fw"></i>Закрыть
+                                                                </a>}
+                                                            <a class="dropdown-item" href="@Url.Action("Delete", "IT", new { id = rec.Id })">
+                                                                <i class="fa fa-times text-danger fa-fw"></i>Удалить
+                                                            </a>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="ticket-actions col-md-2">
-                                            <div class="btn-group dropdown">
-                                                <button type="button" class="btn btn-success dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    Действия
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="@Url.Action("Reply","IT", new { id = rec.Id })">
-                                                        <i class="fa fa-reply fa-fw"></i>Ответить
-                                                    </a>
-                                                    @if (rec.Status == "New")
-                                                    {
-                                                        <a class="dropdown-item" href="@Url.Action("GetTicket","IT", new { id = rec.Id })">
-                                                            <i class="fa fa-history fa-fw"></i>Взять заявку
-                                                        </a>
-                                                    }
-                                                    <div class="dropdown-divider"></div>
-                                                    <a class="dropdown-item" href="@Url.Action("Redirect","IT", new { id = rec.Id })">
-                                                        <i class="fa fa-check text-success fa-fw"></i>Перенаправить
-                                                    </a>
-                                                    @if (rec.Status != "Closed")
-                                                    {
-                                                        <a class="dropdown-item" href="@Url.Action("Close","IT", new { id = rec.Id })">
-                                                            <i class="fa fa-times text-danger fa-fw"></i>Закрыть
-                                                        </a>}
-                                                    <a class="dropdown-item" href="@Url.Action("Delete","IT", new { id = rec.Id })">
-                                                        <i class="fa fa-times text-danger fa-fw"></i>Удалить
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                        }
+                                    }
                                 }
                             </div>
                         </div>

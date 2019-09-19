@@ -1,4 +1,4 @@
-﻿@model  TasksERP.Models.Tickets
+﻿@model  TasksERP.TicketsArchive
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -20,11 +20,11 @@
                             @if (Model.Status.ToLower() == "new" || Model.Status.ToLower() == "in progress")
                             {
                                 <p class="text-dark font-weight-semibold mr-2 mb-0 no-wrap"> Исполнитель: @Model.AssignedTo</p>
-                                <p class="mb-0 ellipsis">Дата назначения: @Model.AssignmentDate</p>
+                                <p class="mb-0 ellipsis">Дата назначения: @Model.DateCreated</p>
                             }
                             else if (Model.Status.ToLower() == "closed")
                             {
-                                <p class="mb-0 ellipsis">  @Model.ClosureDate</p>
+                                <p class="mb-0 ellipsis">  @Model.DateClosed</p>
                             }
                         </a>
                     
@@ -32,7 +32,7 @@
                             
                             <p class="text-gray ellipsis mb-2"></p>
                             <p class="card-description">
-                                @Model.Description
+                                @Html.Raw(Model.Description)
                             </p>
 
                         </div>
@@ -46,7 +46,7 @@
                                     </div>
                                 </div>
                             </div>
-                            @Html.TextAreaFor(model => model.Notes1, new { @class = "form-control", rows = "2", id = "exampleTextarea1" })
+                            @Html.TextAreaFor(model => model.Comment, new { @class = "form-control", rows = "2", id = "exampleTextarea1" })
                         </div>
 
                         <button type="submit" class="btn btn-success mr-xl-5">Отправить</button>

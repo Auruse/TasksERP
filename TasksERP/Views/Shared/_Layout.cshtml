@@ -42,7 +42,7 @@
                         {
                             <li id="3" class="nav-item active">
                                 <a href="@Url.Action("Main", "Home")" class="nav-link">
-                                    <i class="mdi mdi-home"></i>Кабинет
+                                    <i class="mdi mdi-home"></i>Личный кабинет
                                 </a>
                             </li>
                         }
@@ -50,50 +50,50 @@
                         {
                             <li id="3" class="nav-item">
                                 <a href="@Url.Action("Main", "Home")" class="nav-link">
-                                    <i class="mdi mdi-home"></i>Кабинет
+                                    <i class="mdi mdi-home"></i>Личный кабинет
                                 </a>
                             </li>
                         }
 
 
-                        if (urlPath.Contains("Manager"))
-                        {
-                            <li id="1" class="nav-item active">
-                                <a href='@Url.Action("Main", "Manager")' class="nav-link">
-                                    <i class="mdi mdi-elevation-rise"></i>Менеджер
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li id="1" class="nav-item">
-                                <a href='@Url.Action("Main", "Manager")' class="nav-link">
-                                    <i class="mdi mdi-elevation-rise"></i>Менеджер
-                                </a>
-                            </li>
-                        }
+                        @*if (urlPath.Contains("Manager"))
+                            {
+                                <li id="1" class="nav-item active">
+                                    <a href='@Url.Action("Main", "Manager")' class="nav-link">
+                                        <i class="mdi mdi-elevation-rise"></i>Менеджер
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li id="1" class="nav-item">
+                                    <a href='@Url.Action("Main", "Manager")' class="nav-link">
+                                        <i class="mdi mdi-elevation-rise"></i>Менеджер
+                                    </a>
+                                </li>
+                            }*@
 
-                        if (urlPath.Contains("HR"))
-                        {
-                            <li id="3" class="nav-item active">
-                                <a href="@Url.Action("Main", "HR")" class="nav-link">
-                                    <i class="mdi mdi-human"></i>Кадры
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li id="3" class="nav-item">
-                                <a href="@Url.Action("Main", "HR")" class="nav-link">
-                                    <i class="mdi mdi-human"></i>Кадры
-                                </a>
-                            </li>
-                        }
+                        @*if (urlPath.Contains("HR"))
+                            {
+                                <li id="3" class="nav-item active">
+                                    <a href="@Url.Action("Main", "HR")" class="nav-link">
+                                        <i class="mdi mdi-human"></i>Кадры
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li id="3" class="nav-item">
+                                    <a href="@Url.Action("Main", "HR")" class="nav-link">
+                                        <i class="mdi mdi-human"></i>Кадры
+                                    </a>
+                                </li>
+                            }*@
                         if (urlPath.Contains("IT"))
                         {
                             <li id="4" class="nav-item active">
                                 <a href=@Url.Action("Main", "IT") class="nav-link">
-                                    <i class="mdi mdi-information"></i>ИТ
+                                    <i class="mdi mdi-information"></i>IT Helpdesk
                                 </a>
                             </li>
                         }
@@ -101,7 +101,7 @@
                         {
                             <li id="4" class="nav-item">
                                 <a href=@Url.Action("Main", "IT") class="nav-link">
-                                    <i class="mdi mdi-information"></i>ИТ
+                                    <i class="mdi mdi-information"></i>IT Helpdesk
                                 </a>
                             </li>
                         }
@@ -171,11 +171,12 @@
                             </a>
                         </div>
                     </li>
-
+                    @*ViewBag.img  src="../../images/faces/face1.jpg"*@
                     <li class="nav-item dropdown d-none d-xl-inline-block">
                         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                            <span class="profile-text">Сергей M. Иванов</span>
-                            <img class="img-xs rounded-circle" src="../../images/faces/face1.jpg" alt="Profile image">
+                            <span class="profile-text">@ViewBag.UserName </span>
+                            <img class="img-xs rounded-circle" src=@ViewBag.PhotoUrl alt="Profile image">
+
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             <a class="dropdown-item p-0">
@@ -220,16 +221,17 @@
                         <div class="nav-link">
                             <div class="user-wrapper">
                                 <div class="profile-image">
-                                    <img src="../../images/faces/face1.jpg" alt="profile image">
+                                    <img src=@ViewBag.PhotoUrl alt="profile image">
                                 </div>
                                 <div class="text-wrapper">
-                                    <p class="profile-name">Сергей M. Иванов</p>
+                                    <p class="profile-name">@ViewBag.UserName</p>
                                     <div>
-                                        <small class="designation text-muted">Менеджер</small>
+                                        <small class="designation text-muted">@ViewBag.JobTitle</small>
                                         <span class="status-indicator online"></span>
                                         <hr />
-                                        <small class="designation text-behance">Остаток отпуска: 14 дней</small>
+                                        @*<small class="designation text-behance">Остаток отпуска: 14 дней</small>*@
                                     </div>
+                                    <p class="profile-name">@ViewBag.Department</p>
                                 </div>
                             </div>
                             @*<button class="btn btn-success btn-block" onclick="location.href='@Url.Action("NewTask", "Home")'">
@@ -242,63 +244,81 @@
                 </button>*@
                         </div>
                     </li>
-                    @{ if (urlPath.Contains("NewTaskHR") && urlPath.Contains("HR"))
-                        {
-                            <li class="nav-item active">
-                                <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
-                                    <i class="menu-icon mdi mdi-beach"></i>
-                                    <span class="menu-title">Заявление на отпуск</span>
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
-                                    <i class="menu-icon mdi mdi-beach"></i>
-                                    <span class="menu-title">Заявление на отпуск</span>
-                                </a>
-                            </li>
-                        }
-                        if (urlPath.Contains("NewTaskSickLeave") && urlPath.Contains("HR"))
-                        {
-                            <li class="nav-item active">
-                                <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
-                                    <i class="menu-icon mdi mdi-medical-bag"></i>
-                                    <span class="menu-title">Больничный</span>
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
-                                    <i class="menu-icon mdi mdi-medical-bag"></i>
-                                    <span class="menu-title">Больничный</span>
-                                </a>
-                            </li>
-                        }
-                        <li class="nav-item">
-                            <hr />  
-                        </li>
-                        if (urlPath.Contains("NewTaskIT") && urlPath.Contains("IT"))
-                        {
-                            <li class="nav-item active">
-                                <a class="nav-link" href="@Url.Action("NewTaskIT", "IT")">
-                                    <i class="menu-icon mdi mdi-spotify"></i>
-                                    <span class="menu-title">Обратиться в ИТ</span>
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li class="nav-item">
-                                <a class="nav-link" href="@Url.Action("NewTaskIT", "IT")">
-                                    <i class="menu-icon mdi mdi-spotify"></i>
-                                    <span class="menu-title">Обратиться в ИТ</span>
-                                </a>
-                            </li>
-                        } }
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                            <i class="menu-icon mdi mdi-beach"></i>
+                            <span class="menu-title">New Appraisal</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                            <i class="menu-icon mdi mdi-beach"></i>
+                            <span class="menu-title">Pending Appraisals</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                            <i class="menu-icon mdi mdi-beach"></i>
+                            <span class="menu-title">Completed Appraisals</span>
+                        </a>
+                    </li>
+                    @*@{ if (urlPath.Contains("NewTaskHR") && urlPath.Contains("HR"))
+        {
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                    <i class="menu-icon mdi mdi-beach"></i>
+                    <span class="menu-title">Заявление на отпуск</span>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                    <i class="menu-icon mdi mdi-beach"></i>
+                    <span class="menu-title">Заявление на отпуск</span>
+                </a>
+            </li>
+        }
+        if (urlPath.Contains("NewTaskSickLeave") && urlPath.Contains("HR"))
+        {
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
+                    <i class="menu-icon mdi mdi-medical-bag"></i>
+                    <span class="menu-title">Больничный</span>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
+                    <i class="menu-icon mdi mdi-medical-bag"></i>
+                    <span class="menu-title">Больничный</span>
+                </a>
+            </li>
+        }
+        <li class="nav-item">
+            <hr />
+        </li>
+        if (urlPath.Contains("NewTaskIT") && urlPath.Contains("IT"))
+        {
+            <li class="nav-item active">
+                <a class="nav-link" href="@Url.Action("NewTaskIT", "IT")">
+                    <i class="menu-icon mdi mdi-spotify"></i>
+                    <span class="menu-title">Обратиться в ИТ</span>
+                </a>
+            </li>
+        }
+        else
+        {
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Action("NewTaskIT", "IT")">
+                    <i class="menu-icon mdi mdi-spotify"></i>
+                    <span class="menu-title">Обратиться в ИТ</span>
+                </a>
+            </li>
+        } }*@
 
                 </ul>
             </nav>
@@ -306,7 +326,57 @@
         </div>
     </div>
     <!-- container-scroller -->
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+            integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+            crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+            integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+            crossorigin="anonymous"></script>
+    <script>
+        (function ($) {
+            $.fn.drags = function (opt) {
 
+                opt = $.extend({ handle: "", cursor: "move" }, opt);
+
+                if (opt.handle === "") {
+                    var $el = this;
+                } else {
+                    var $el = this.find(opt.handle);
+                }
+
+                return $el.css('cursor', opt.cursor).on("mousedown", function (e) {
+                    if (opt.handle === "") {
+                        var $drag = $(this).addClass('draggable');
+                    } else {
+                        var $drag = $(this).addClass('active-handle').parent().addClass('draggable');
+                    }
+                    var z_idx = $drag.css('z-index'),
+                        drg_h = $drag.outerHeight(),
+                        drg_w = $drag.outerWidth(),
+                        pos_y = $drag.offset().top + drg_h - e.pageY,
+                        pos_x = $drag.offset().left + drg_w - e.pageX;
+                    $drag.css('z-index', 1000).parents().on("mousemove", function (e) {
+                        $('.draggable').offset({
+                            top: e.pageY + pos_y - drg_h,
+                            left: e.pageX + pos_x - drg_w
+                        }).on("mouseup", function () {
+                            $(this).removeClass('draggable').css('z-index', z_idx);
+                        });
+                    });
+                    e.preventDefault(); // disable selection
+                }).on("mouseup", function () {
+                    if (opt.handle === "") {
+                        $(this).removeClass('draggable');
+                    } else {
+                        $(this).removeClass('active-handle').parent().removeClass('draggable');
+                    }
+                });
+
+            }
+        })(jQuery);
+
+        $('.card').drags();
+    </script>
     <script src=@Url.Content("~/vendors/js/vendor.bundle.base.js")></script>
     <script src=@Url.Content("~/vendors/js/vendor.bundle.addons.js")></script>
     <!-- endinject -->

@@ -100,8 +100,8 @@ $(function() {
 
     // These labels appear in the legend and in the tooltips when hovering different arcs
     labels: [
-      'Sales',
-      'HR',
+      'Regus',
+      'Santen',
       'Other',
     ]
   };
