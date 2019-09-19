@@ -1,86 +1,217 @@
-﻿@{
-    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+﻿
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<body>
-    <div class="container-scroller">
-        <div class="container-fluid page-body-wrapper full-page-wrapper auth-page">
-            <div class="content-wrapper d-flex align-items-center auth auth-bg-1 theme-one">
-                <div class="row w-100">
-                    <div class="col-lg-4 mx-auto">
-                        <div class="auto-form-wrapper">
-                            <form action="#">
-                                <div class="form-group">
-                                    <label class="label">Username</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Username">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">
-                                                <i class="mdi mdi-check-circle-outline"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="label">Password</label>
-                                    <div class="input-group">
-                                        <input type="password" class="form-control" placeholder="*********">
-                                        <div class="input-group-append">
-                                            <span class="input-group-text">
-                                                <i class="mdi mdi-check-circle-outline"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                     
-                                        <button type="button" class="btn btn-primary submit-btn btn-block" onclick="location.href='@Url.Action("Main", "Home")'" >Login</button>
-                                     
-                                </div>
-                                <div class="form-group d-flex justify-content-between">
-                                    <div class="form-check form-check-flat mt-0">
-                                        <label class="form-check-label">
-                                            <input type="checkbox" class="form-check-input" checked> Keep me signed in
-                                        </label>
-                                    </div>
-                                    <a href="#" class="text-small forgot-password text-black">Forgot Password</a>
-                                </div>
-                                <div class="form-group">
-                                    <button class="btn btn-block g-login">
-                                        <img class="mr-3" src="../../images/file-icons/icon-google.svg" alt="">Log in with Google
-                                    </button>
-                                </div>
-                                <div class="text-block text-center my-3">
-                                    <span class="text-small font-weight-semibold">Not a member ?</span>
-                                    <a href="register.html" class="text-black text-small">Create new account</a>
-                                </div>
-                            </form>
+
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card card-body">
+                    <h4 class="card-title">Personal Profile</h4>
+                    @*<p class="card-description">
+            Use
+            <code>&lt;address&gt;</code> tag
+        </p>*@
+                <h2 class="font-weight-bold text-facebook pl-1">@ViewBag.UserName</h2>
+                    <hr />
+                    <div class="row">
+                        <div class="col-md-3">
+                            <address>
+                                <p>
+                                    Position: Junior 2
+                                </p>
+                                <p>
+                                    Mentor: Ivan Komarov
+                                </p>
+                                <p>
+                                    Moscow Office
+                                </p>
+                            </address>
                         </div>
-                        <ul class="auth-footer">
-                            <li>
-                                <a href="#">Conditions</a>
-                            </li>
-                            <li>
-                                <a href="#">Help</a>
-                            </li>
-                            <li>
-                                <a href="#">Terms</a>
-                            </li>
-                        </ul>
-                        <p class="footer-text text-center">Copyright © 2019. All rights reserved.</p>
+                        <div class="col-md-3">
+                            <address class="text-primary">
+                                <p class="font-weight-bold">
+                                    Average Mark: G+
+                                </p>
+                                <p class="mb-2">
+                                    Number of Days: 60
+                                </p>
+                                <p class="font-weight-bold">
+                                    Number of Projects: 10
+                                </p>
+                            </address>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- content-wrapper ends -->
+            @*<div class="col-lg-3 grid-margin stretch-card">
+
+                <div class="card card-body">
+                    <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                    <h6 class="card">Mark by number of days</h6>
+                    <canvas id="doughnutChart" style="height: 182px; display: block; width: 364px;" width="364" height="182" class="chartjs-render-monitor"></canvas>
+                </div>
+
+            </div>*@
+            <div class="col-lg-3 grid-margin stretch-card">
+
+                <div class="card card-body">
+                    <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                    <h6 class="card">Mark by number of days</h6>
+                    <canvas id="myChart" style="height: 182px; display: block; width: 364px;" width="364" height="182" class="chartjs-render-monitor"></canvas>
+                </div>
+
+            </div>
         </div>
-        <!-- page-body-wrapper ends -->
+
+        <div class="row">
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 grid-margin stretch-card">
+                <div class="card card-statistics">
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <div class="float-left">
+                                <i class="mdi mdi-receipt text-warning icon-lg"></i>
+                            </div>
+                            <div class="float-right">
+                                <p class="mb-0 text-right">New Appraisals</p>
+                                <div class="fluid-container">
+                                    <a href="@Url.Action("Main", "IT", new { GetWithStatus = "New" })"><h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsNew</h3></a>
+                                </div>
+                            </div>
+                        </div>
+                        @*<p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i>без испольнителя
+                            </p>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                <div class="card card-statistics">
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <div class="float-left">
+                                <i class="mdi mdi-poll-box text-success icon-lg"></i>
+                            </div>
+                            <div class="float-right">
+                                <p class="mb-0 text-right">Pending Appraisals</p>
+                                <div class="fluid-container">
+                                    <a href="@Url.Action("Main", "IT", new { GetWithStatus = "Assigned" })"><h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsInProgress</h3></a>
+                                </div>
+                            </div>
+                        </div>
+                        @*<p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-calendar mr-1" aria-hidden="true"></i>назначены
+                            </p>*@
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-3 col-sm-6 grid-margin stretch-card">
+                <div class="card card-statistics">
+                    <div class="card-body">
+                        <div class="clearfix">
+                            <div class="float-left">
+                                <i class="mdi mdi-account-location text-info icon-lg"></i>
+                            </div>
+                            <div class="float-right">
+                                <p class="mb-0 text-right">Completed Appraisals</p>
+                                <div class="fluid-container">
+                                    <a href="@Url.Action("Main", "IT", new { GetWithStatus = "Closed" })"><h3 class="font-weight-medium text-right mb-0">@ViewBag.TicketsClosed</h3></a>
+                                </div>
+                            </div>
+                        </div>
+                        @*<p class="text-muted mt-3 mb-0">
+                                <i class="mdi mdi-reload mr-1" aria-hidden="true"></i> последняя заявка закрыта сегодня в 10.09
+                            </p>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-9">
+            <div class="card card-body">
+                <h4 class="card-title">Pending Appraisals</h4>
+                <hr />
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>
+                                    
+                                </th>
+                                <th>
+                                    Senior
+                                </th>
+                                <th>
+                                    Manager                                    
+                                </th>
+                                <th>
+                                    Project Code
+                                </th>
+                                <th>
+                                    Number of Days
+                                </th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="py-1">
+                                    <img src="../../images/faces-clipart/pic-1.png" alt="image">
+                                </td>
+                                <td>
+                                    Herman Beck
+                                </td>
+                                <td>
+                                    Andrei Ivanov
+                                </td>
+                                <td>
+                                    Pragma-1
+                                </td>
+                                <td>
+                                    23
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-1">
+                                    <img src="../../images/faces-clipart/pic-2.png" alt="image">
+                                </td>
+                                <td>
+                                    Herman Beck
+                                </td>
+                                <td>
+                                    Andrei Ivanov
+                                </td>
+                                <td>
+                                    Pragma-1
+                                </td>
+                                <td>
+                                    23
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="py-1">
+                                    <img src="../../images/faces-clipart/pic-3.png" alt="image">
+                                </td>
+                                <td>
+                                    Herman Beck
+                                </td>
+                                <td>
+                                    Andrei Ivanov
+                                </td>
+                                <td>
+                                    Pragma-1
+                                </td>
+                                <td>
+                                    23
+                                </td>
+                            </tr>
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <!-- container-scroller -->
-    <!-- plugins:js -->
-    <script src="../../vendors/js/vendor.bundle.base.js"></script>
-    <script src="../../vendors/js/vendor.bundle.addons.js"></script>
-    <!-- endinject -->
-    <!-- inject:js -->
-    <script src="../../js/off-canvas.js"></script>
-    <script src="../../js/misc.js"></script>
-    <!-- endinject -->
-</body>
+</div>
+

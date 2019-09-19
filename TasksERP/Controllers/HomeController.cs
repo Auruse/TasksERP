@@ -11,11 +11,18 @@ namespace TasksERP.Controllers
     {
 
         //TicketsContainer db = new TicketsContainer();
-        LeavReqEntities db = new LeavReqEntities();
+        //LeavReqEntities db = new LeavReqEntities();
         // GET: Home
         public ActionResult Index()
         {
-             
+            ViewBag.UserName = "Ivan Ivanov";
+            ViewBag.EmailAddress = "ivan.ivanov@mazars.ru";
+
+            ViewBag.Department = "Audit";
+            ViewBag.JobTitle = "Junior Assistant";
+            ViewBag.TicketsNew = 2;
+            ViewBag.TicketsInProgress = 3;
+            ViewBag.TicketsClosed = 10;
 
 
             return View();
@@ -31,35 +38,37 @@ namespace TasksERP.Controllers
         //}
         public ActionResult Main(string GetWithStatus)
         {
-            ViewBag.TicketsTotal = db.TicketsArchives.Count() > 0 ? db.TicketsArchives.Count() : 0;
-            ViewBag.TicketsClosed = db.TicketsArchives.Count() > 0 ? db.TicketsArchives.Count(x => x.Status == "Closed") : 0;
-            ViewBag.TicketsInProgress = db.TicketsArchives.Count() > 0 ? db.TicketsArchives.Count(x => x.Status == "In Progress") : 0;
-            ViewBag.TicketsNew = db.TicketsArchives.Count() > 0 ? db.TicketsArchives.Count(x => x.Status == "New") : 0;
+             
 
-            var username = "meshkov";
-            //depending on your environment, you may need to specify a container along with the domain
-            //ex: new PrincipalContext(ContextType.Domain, "yourdomain", "OU=abc,DC=xyz")
-            using (var context = new PrincipalContext(ContextType.Domain, "mazars.ru"))
-            {
-                var user = UserPrincipal.FindByIdentity(context, username);
-                if (user != null)
-                {
-                    ViewBag.UserName = user.Name;
-                    ViewBag.EmailAddress = user.EmailAddress;
-                    DirectoryEntry directoryEntry = user.GetUnderlyingObject() as DirectoryEntry;
-                    ViewBag.Department = directoryEntry.Properties["department"].Value.ToString();
-                    ViewBag.JobTitle = directoryEntry.Properties["title"].Value.ToString();
-                    //ViewBag.img = GetUserPhoto(user.Name);
-                    ViewBag.PhotoUrl = "https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email=" + user.EmailAddress + "&UA=0&size=HR64x64";
+            //ViewBag.TicketsTotal = db.TicketsArchives.Count() > 0 ? db.TicketsArchives.Count() : 0;
+            //ViewBag.TicketsClosed = db.TicketsArchives.Count() > 0 ? db.TicketsArchives.Count(x => x.Status == "Closed") : 0;
+            //ViewBag.TicketsInProgress = db.TicketsArchives.Count() > 0 ? db.TicketsArchives.Count(x => x.Status == "In Progress") : 0;
+            //ViewBag.TicketsNew = db.TicketsArchives.Count() > 0 ? db.TicketsArchives.Count(x => x.Status == "New") : 0;
+
+            //var username = "meshkov";
+            ////depending on your environment, you may need to specify a container along with the domain
+            ////ex: new PrincipalContext(ContextType.Domain, "yourdomain", "OU=abc,DC=xyz")
+            //using (var context = new PrincipalContext(ContextType.Domain, "mazars.ru"))
+            //{
+            //    var user = UserPrincipal.FindByIdentity(context, username);
+            //    if (user != null)
+            //    {
+            //        ViewBag.UserName = user.Name;
+            //        ViewBag.EmailAddress = user.EmailAddress;
+            //        DirectoryEntry directoryEntry = user.GetUnderlyingObject() as DirectoryEntry;
+            //        ViewBag.Department = directoryEntry.Properties["department"].Value.ToString();
+            //        ViewBag.JobTitle = directoryEntry.Properties["title"].Value.ToString();
+            //        //ViewBag.img = GetUserPhoto(user.Name);
+            //        ViewBag.PhotoUrl = "https://outlook.office365.com/owa/service.svc/s/GetPersonaPhoto?email=" + user.EmailAddress + "&UA=0&size=HR64x64";
 
 
-                    var ticketsDataSet = string.IsNullOrEmpty(GetWithStatus) ? db.TicketsArchives.Take(10).ToList() : db.TicketsArchives.Where(x => x.Status == GetWithStatus).Take(10).ToList();
+            //        var ticketsDataSet = string.IsNullOrEmpty(GetWithStatus) ? db.TicketsArchives.Take(10).ToList() : db.TicketsArchives.Where(x => x.Status == GetWithStatus).Take(10).ToList();
 
 
-                    return View(ticketsDataSet);
+            //        return View(ticketsDataSet);
 
-                }
-            }
+            //    }
+            //}
 
 
             return View();

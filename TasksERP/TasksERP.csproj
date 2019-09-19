@@ -154,33 +154,87 @@
     <Content Include="images\faces-clipart\pic-2.png" />
     <Content Include="images\faces-clipart\pic-3.png" />
     <Content Include="images\faces-clipart\pic-4.png" />
-    <Content Include="images\faces\face1.jpg" />
-    <Content Include="images\faces\face10.jpg" />
-    <Content Include="images\faces\face11.jpg" />
-    <Content Include="images\faces\face12.jpg" />
-    <Content Include="images\faces\face13.jpg" />
-    <Content Include="images\faces\face14.jpg" />
-    <Content Include="images\faces\face15.jpg" />
-    <Content Include="images\faces\face16.jpg" />
-    <Content Include="images\faces\face17.jpg" />
-    <Content Include="images\faces\face18.jpg" />
-    <Content Include="images\faces\face19.jpg" />
-    <Content Include="images\faces\face2.jpg" />
-    <Content Include="images\faces\face20.jpg" />
-    <Content Include="images\faces\face21.jpg" />
-    <Content Include="images\faces\face22.jpg" />
-    <Content Include="images\faces\face23.jpg" />
-    <Content Include="images\faces\face24.jpg" />
-    <Content Include="images\faces\face25.jpg" />
-    <Content Include="images\faces\face26.jpg" />
-    <Content Include="images\faces\face27.jpg" />
-    <Content Include="images\faces\face3.jpg" />
-    <Content Include="images\faces\face4.jpg" />
-    <Content Include="images\faces\face5.jpg" />
-    <Content Include="images\faces\face6.jpg" />
-    <Content Include="images\faces\face7.jpg" />
-    <Content Include="images\faces\face8.jpg" />
-    <Content Include="images\faces\face9.jpg" />
+    <Content Include="images\faces\face1.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face10.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face11.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face12.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face13.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face14.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face15.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face16.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face17.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face18.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face19.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face2.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face20.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face21.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face22.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face23.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face24.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face25.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face26.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face27.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face3.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face4.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face5.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face6.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face7.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face8.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\faces\face9.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="images\favicon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -2814,7 +2868,7 @@
     <Content Include="Views\Manager\Main.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Home\Index.cshtml">
+    <Content Include="Views\Home\Index2.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Web.config" />
@@ -2862,7 +2916,6 @@
       <DependentUpon>Tickets.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <None Include="Resources\Resource.Designer.cs" />
     <Compile Include="TicketsArchive.cs">
       <DependentUpon>TicketsIT.tt</DependentUpon>
     </Compile>
@@ -3197,7 +3250,7 @@
     <Content Include="Views\HR\Details.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="Views\Home\Main.cshtml">
+    <Content Include="Views\Home\Index.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Views\HR\NewTaskHR.cshtml">
@@ -3213,6 +3266,8 @@
     <Content Include="TicketsIT.edmx.diagram">
       <DependentUpon>TicketsIT.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\assessmentcenter - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\assessmentcenter - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3229,9 +3284,6 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Resource.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

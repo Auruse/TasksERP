@@ -5,7 +5,8 @@ $(function() {
    */
   'use strict';
   var data = {
-    labels: ["2014", "2015", "2016", "2017", "2018", "2019"],
+      //labels: ["2014", "2015", "2016", "2017", "2018", "2019"],
+      labels: ["Working Performance", "Techical Skills", "Volume of Work", "Quality of Comminucation with clients"],
     datasets: [{
       label: 'Requests',
       data: [10, 19, 3, 5, 2, 3],
@@ -100,9 +101,9 @@ $(function() {
 
     // These labels appear in the legend and in the tooltips when hovering different arcs
     labels: [
-      'Regus',
-      'Santen',
-      'Other',
+      'I+',
+      'G',
+      'G+',
     ]
   };
   var doughnutPieOptions = {
@@ -143,7 +144,7 @@ $(function() {
     ]
   };
   var areaData = {
-    labels: ["2015", "2016", "2017", "2018", "2019"],
+    labels: ["Working Performance", "Techical Skills", "Volume of Work", "Quality of Comminucation with clients"],
     datasets: [{
       label: 'Requests',
       data: [12, 19, 3, 5, 3, 3],

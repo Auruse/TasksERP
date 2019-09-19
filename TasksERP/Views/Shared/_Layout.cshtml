@@ -42,7 +42,7 @@
                         {
                             <li id="3" class="nav-item active">
                                 <a href="@Url.Action("Main", "Home")" class="nav-link">
-                                    <i class="mdi mdi-home"></i>Личный кабинет
+                                    <i class="mdi mdi-home"></i>Profile
                                 </a>
                             </li>
                         }
@@ -50,7 +50,7 @@
                         {
                             <li id="3" class="nav-item">
                                 <a href="@Url.Action("Main", "Home")" class="nav-link">
-                                    <i class="mdi mdi-home"></i>Личный кабинет
+                                    <i class="mdi mdi-home"></i>Profile
                                 </a>
                             </li>
                         }
@@ -89,7 +89,7 @@
                                     </a>
                                 </li>
                             }*@
-                        if (urlPath.Contains("IT"))
+                        @*if (urlPath.Contains("IT"))
                         {
                             <li id="4" class="nav-item active">
                                 <a href=@Url.Action("Main", "IT") class="nav-link">
@@ -104,7 +104,7 @@
                                     <i class="mdi mdi-information"></i>IT Helpdesk
                                 </a>
                             </li>
-                        }
+                        }*@
 
                     }
 
@@ -174,8 +174,9 @@
                     @*ViewBag.img  src="../../images/faces/face1.jpg"*@
                     <li class="nav-item dropdown d-none d-xl-inline-block">
                         <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                            <span class="profile-text">@ViewBag.UserName </span>
-                            <img class="img-xs rounded-circle" src=@ViewBag.PhotoUrl alt="Profile image">
+                            @*<span class="profile-text">@ViewBag.UserName </span>*@
+                            @*<img class="img-xs rounded-circle" src=@ViewBag.PhotoUrl alt="Profile image">*@
+                            <img class="img-xs rounded-circle" src=@Url.Content("~/images/faces/face1.jpg") alt="profile image">
 
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
@@ -193,13 +194,10 @@
                                 </div>
                             </a>
                             <a class="dropdown-item mt-2">
-                                Профайл
+                                Настройки
                             </a>
                             <a class="dropdown-item">
-                                Смена пароля
-                            </a>
-                            <a class="dropdown-item">
-                                Проверить почту
+                                Письмо в тех.поддержку
                             </a>
                             <a class="dropdown-item" onclick="location.href='@Url.Action("Exit", "Home")'">
                                 Выйти
@@ -221,7 +219,8 @@
                         <div class="nav-link">
                             <div class="user-wrapper">
                                 <div class="profile-image">
-                                    <img src=@ViewBag.PhotoUrl alt="profile image">
+                                    @*<img src=@ViewBag.PhotoUrl alt="profile image">*@
+                                    <img src=@Url.Content("~/images/faces/face1.jpg") alt="profile image">
                                 </div>
                                 <div class="text-wrapper">
                                     <p class="profile-name">@ViewBag.UserName</p>
@@ -235,90 +234,90 @@
                                 </div>
                             </div>
                             @*<button class="btn btn-success btn-block" onclick="location.href='@Url.Action("NewTask", "Home")'">
-                    Заявление на отпуск
-                    <i class="mdi mdi-plus"></i>
-                </button>
-                <button class="btn btn-success btn-block" onclick="location.href='@Url.Action("NewTask", "Home")'">
-                    Запрос в ИТ
-                    <i class="mdi mdi-plus"></i>
-                </button>*@
+                                    Заявление на отпуск
+                                    <i class="mdi mdi-plus"></i>
+                                </button>
+                                <button class="btn btn-success btn-block" onclick="location.href='@Url.Action("NewTask", "Home")'">
+                                    Запрос в ИТ
+                                    <i class="mdi mdi-plus"></i>
+                                </button>*@
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
-                            <i class="menu-icon mdi mdi-beach"></i>
-                            <span class="menu-title">New Appraisal</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
-                            <i class="menu-icon mdi mdi-beach"></i>
-                            <span class="menu-title">Pending Appraisals</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
-                            <i class="menu-icon mdi mdi-beach"></i>
-                            <span class="menu-title">Completed Appraisals</span>
-                        </a>
-                    </li>
+                    @*<li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                                <i class="menu-icon mdi mdi-beach"></i>
+                                <span class="menu-title">New Appraisal</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                                <i class="menu-icon mdi mdi-beach"></i>
+                                <span class="menu-title">Pending Appraisals</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                                <i class="menu-icon mdi mdi-beach"></i>
+                                <span class="menu-title">Completed Appraisals</span>
+                            </a>
+                        </li>*@
                     @*@{ if (urlPath.Contains("NewTaskHR") && urlPath.Contains("HR"))
-        {
-            <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
-                    <i class="menu-icon mdi mdi-beach"></i>
-                    <span class="menu-title">Заявление на отпуск</span>
-                </a>
-            </li>
-        }
-        else
-        {
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
-                    <i class="menu-icon mdi mdi-beach"></i>
-                    <span class="menu-title">Заявление на отпуск</span>
-                </a>
-            </li>
-        }
-        if (urlPath.Contains("NewTaskSickLeave") && urlPath.Contains("HR"))
-        {
-            <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
-                    <i class="menu-icon mdi mdi-medical-bag"></i>
-                    <span class="menu-title">Больничный</span>
-                </a>
-            </li>
-        }
-        else
-        {
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
-                    <i class="menu-icon mdi mdi-medical-bag"></i>
-                    <span class="menu-title">Больничный</span>
-                </a>
-            </li>
-        }
-        <li class="nav-item">
-            <hr />
-        </li>
-        if (urlPath.Contains("NewTaskIT") && urlPath.Contains("IT"))
-        {
-            <li class="nav-item active">
-                <a class="nav-link" href="@Url.Action("NewTaskIT", "IT")">
-                    <i class="menu-icon mdi mdi-spotify"></i>
-                    <span class="menu-title">Обратиться в ИТ</span>
-                </a>
-            </li>
-        }
-        else
-        {
-            <li class="nav-item">
-                <a class="nav-link" href="@Url.Action("NewTaskIT", "IT")">
-                    <i class="menu-icon mdi mdi-spotify"></i>
-                    <span class="menu-title">Обратиться в ИТ</span>
-                </a>
-            </li>
-        } }*@
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                                    <i class="menu-icon mdi mdi-beach"></i>
+                                    <span class="menu-title">Заявление на отпуск</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("NewTaskHR", "HR")">
+                                    <i class="menu-icon mdi mdi-beach"></i>
+                                    <span class="menu-title">Заявление на отпуск</span>
+                                </a>
+                            </li>
+                        }
+                        if (urlPath.Contains("NewTaskSickLeave") && urlPath.Contains("HR"))
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
+                                    <i class="menu-icon mdi mdi-medical-bag"></i>
+                                    <span class="menu-title">Больничный</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("NewTaskSickLeave", "HR")">
+                                    <i class="menu-icon mdi mdi-medical-bag"></i>
+                                    <span class="menu-title">Больничный</span>
+                                </a>
+                            </li>
+                        }
+                        <li class="nav-item">
+                            <hr />
+                        </li>
+                        if (urlPath.Contains("NewTaskIT") && urlPath.Contains("IT"))
+                        {
+                            <li class="nav-item active">
+                                <a class="nav-link" href="@Url.Action("NewTaskIT", "IT")">
+                                    <i class="menu-icon mdi mdi-spotify"></i>
+                                    <span class="menu-title">Обратиться в ИТ</span>
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link" href="@Url.Action("NewTaskIT", "IT")">
+                                    <i class="menu-icon mdi mdi-spotify"></i>
+                                    <span class="menu-title">Обратиться в ИТ</span>
+                                </a>
+                            </li>
+                        } }*@
 
                 </ul>
             </nav>
@@ -389,6 +388,50 @@
     <!-- Custom js for this page-->
     <script src=@Url.Content("~/js/dashboard.js")></script>
     <script src=@Url.Content("~/js/chart.js")></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
     <!-- End custom js for this page-->
+    <script>
+        var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['I', 'I+', 'G', 'G+'],                
+                datasets: [{
+                    label: '# of Days',
+                    data: [12, 19, 3, 5],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                showDatasetLabels : true,
+                   cutoutPercentage: 41,
+                legend: {
+                    position: 'right',
+                },
+                scales: {
+                   xAxes: [{
+                            display: false
+                            
+                          }],
+                   yAxes: [{
+                            display: false
+                            
+                          }]
+                }
+            }
+        });
+    </script>
 </body>
 </html>
