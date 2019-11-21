@@ -3,8 +3,7 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-
-    <!-- Required meta tags -->
+        <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Tasks Expert ERP</title>
@@ -12,7 +11,29 @@
     <link rel="stylesheet" href="../../vendors/iconfonts/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="../../vendors/css/vendor.bundle.addons.css">
-    <link rel="stylesheet" href="../../vendors/iconfonts/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="../../vendors/iconfonts/font-awesome/css/font-awesome.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.9/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.0.3/css/buttons.dataTables.min.css">
+
+    
+    @*<link rel="stylesheet" type="text/css" href=@Url.Content("~/DataTables/dataTables.css")>
+        <link rel="stylesheet" type="text/css" href=@Url.Content("~/DataTables/Buttons-1.6.1/css/buttons.bootstrap4.min.css") />
+
+
+        <script type="text/javascript" src=@Url.Content("~/DataTables/JSZip-2.5.0/jszip.min.js")></script>
+        <script type="text/javascript" src=@Url.Content("~/DataTables/pdfmake-0.1.36/pdfmake.min.js")></script>
+        <script type="text/javascript" src=@Url.Content("~/DataTables/pdfmake-0.1.36/vfs_fonts.js")></script>
+        <script type="text/javascript" src=@Url.Content("~/DataTables/DataTables-1.10.20/js/jquery.dataTables.min.js")></script>
+
+        <script type="text/javascript" src=@Url.Content("~/DataTables/DataTables-1.10.20/js/dataTables.bootstrap4.min.js")></script>
+        <script type="text/javascript" src=@Url.Content("~/DataTables/Buttons-1.6.1/js/dataTables.buttons.min.js")></script>
+        <script type="text/javascript" src=@Url.Content("~/DataTables/Buttons-1.6.1/js/buttons.bootstrap4.min.js")></script>
+        <script type="text/javascript" src=@Url.Content("~/DataTables/Buttons-1.6.1/js/buttons.flash.min.js")></script>
+        <script type="text/javascript" src=@Url.Content("~/DataTables/Buttons-1.6.1/js/buttons.html5.min.js")></script>*@
+    @RenderSection("tableScript", required: false)
     <!-- endinject -->
     <!-- plugin css for this page -->
     <!-- End plugin css for this page -->
@@ -36,43 +57,49 @@
 
             <div class="navbar-menu-wrapper d-flex align-items-center ">
                 <ul class="navbar-nav navbar-nav-left header-links d-none d-md-flex">
-                    @{var urlPath = HttpContext.Current.Request.Url.AbsolutePath; }
+                    @{var urlPath = HttpContext.Current.Request.Url.AbsoluteUri; }
 
-                    @{ if (urlPath.Contains("Home"))
+                    @{
+
+                        <li id="1" class="nav-item @(urlPath.Contains("Bookkeeper")   ? "active": "")">
+                            <a href='@Url.Action("Index", "AssessmentStatistics", new { fstatus = "Bookkeeper" })' class="nav-link">
+                                <i class="mdi mdi-elevation-rise"></i>Bookkeeper
+                            </a>
+                        </li>
+                        <li id="1" class="nav-item @(urlPath.Contains("Consultant") && !urlPath.Contains("Senior") ? "active": "")">
+                            <a href='@Url.Action("Index", "AssessmentStatistics", new { fstatus = "Consultant" })' class="nav-link">
+                                <i class="mdi mdi-elevation-rise"></i>Consultant
+                            </a>
+                        </li>
+
+                        <li id="1" class="nav-item @(urlPath.Contains("Senior Consultant") ? "active": "")">
+                            <a href='@Url.Action("Index", "AssessmentStatistics", new { fstatus = "Senior Consultant" })' class="nav-link">
+                                <i class="mdi mdi-elevation-rise"></i>Senior Consultant
+                            </a>
+                        </li>
+                        <li id="1" class="nav-item @(urlPath.Contains("Payroll") ? "active": "")">
+                            <a href='@Url.Action("Index", "AssessmentStatistics", new { fstatus = "Payroll" })' class="nav-link">
+                                <i class="mdi mdi-elevation-rise"></i>Payroll
+                            </a>
+                        </li>
+
+
+                        if (urlPath.Contains("Home"))
                         {
                             <li id="3" class="nav-item active">
-                                <a href="@Url.Action("Main", "Home")" class="nav-link">
-                                    <i class="mdi mdi-home"></i>Profile
+                                <a href="@Url.Action("Index", "Home")" class="nav-link">
+                                    <i class="mdi mdi-home"></i>Audit Demo
                                 </a>
                             </li>
                         }
                         else
                         {
                             <li id="3" class="nav-item">
-                                <a href="@Url.Action("Main", "Home")" class="nav-link">
-                                    <i class="mdi mdi-home"></i>Profile
+                                <a href="@Url.Action("Index", "Home")" class="nav-link">
+                                    <i class="mdi mdi-home"></i>Audit Demo
                                 </a>
                             </li>
                         }
-
-
-                        @*if (urlPath.Contains("Manager"))
-                            {
-                                <li id="1" class="nav-item active">
-                                    <a href='@Url.Action("Main", "Manager")' class="nav-link">
-                                        <i class="mdi mdi-elevation-rise"></i>Менеджер
-                                    </a>
-                                </li>
-                            }
-                            else
-                            {
-                                <li id="1" class="nav-item">
-                                    <a href='@Url.Action("Main", "Manager")' class="nav-link">
-                                        <i class="mdi mdi-elevation-rise"></i>Менеджер
-                                    </a>
-                                </li>
-                            }*@
-
                         @*if (urlPath.Contains("HR"))
                             {
                                 <li id="3" class="nav-item active">
@@ -90,21 +117,21 @@
                                 </li>
                             }*@
                         @*if (urlPath.Contains("IT"))
-                        {
-                            <li id="4" class="nav-item active">
-                                <a href=@Url.Action("Main", "IT") class="nav-link">
-                                    <i class="mdi mdi-information"></i>IT Helpdesk
-                                </a>
-                            </li>
-                        }
-                        else
-                        {
-                            <li id="4" class="nav-item">
-                                <a href=@Url.Action("Main", "IT") class="nav-link">
-                                    <i class="mdi mdi-information"></i>IT Helpdesk
-                                </a>
-                            </li>
-                        }*@
+                            {
+                                <li id="4" class="nav-item active">
+                                    <a href=@Url.Action("Main", "IT") class="nav-link">
+                                        <i class="mdi mdi-information"></i>IT Helpdesk
+                                    </a>
+                                </li>
+                            }
+                            else
+                            {
+                                <li id="4" class="nav-item">
+                                    <a href=@Url.Action("Main", "IT") class="nav-link">
+                                        <i class="mdi mdi-information"></i>IT Helpdesk
+                                    </a>
+                                </li>
+                            }*@
 
                     }
 
@@ -322,63 +349,78 @@
                 </ul>
             </nav>
             @RenderBody()
+
         </div>
     </div>
-    <!-- container-scroller -->
+    <!--container - scroller-- >
     <script src="https://code.jquery.com/jquery-3.4.1.js"
             integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
             crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
             integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
             crossorigin="anonymous"></script>
-    <script>
-        (function ($) {
-            $.fn.drags = function (opt) {
+    @*<script>
+            (function ($) {
+                $.fn.drags = function (opt) {
 
-                opt = $.extend({ handle: "", cursor: "move" }, opt);
+                    opt = $.extend({ handle: "", cursor: "move" }, opt);
 
-                if (opt.handle === "") {
-                    var $el = this;
-                } else {
-                    var $el = this.find(opt.handle);
-                }
-
-                return $el.css('cursor', opt.cursor).on("mousedown", function (e) {
                     if (opt.handle === "") {
-                        var $drag = $(this).addClass('draggable');
+                        var $el = this;
                     } else {
-                        var $drag = $(this).addClass('active-handle').parent().addClass('draggable');
+                        var $el = this.find(opt.handle);
                     }
-                    var z_idx = $drag.css('z-index'),
-                        drg_h = $drag.outerHeight(),
-                        drg_w = $drag.outerWidth(),
-                        pos_y = $drag.offset().top + drg_h - e.pageY,
-                        pos_x = $drag.offset().left + drg_w - e.pageX;
-                    $drag.css('z-index', 1000).parents().on("mousemove", function (e) {
-                        $('.draggable').offset({
-                            top: e.pageY + pos_y - drg_h,
-                            left: e.pageX + pos_x - drg_w
-                        }).on("mouseup", function () {
-                            $(this).removeClass('draggable').css('z-index', z_idx);
+
+                    return $el.css('cursor', opt.cursor).on("mousedown", function (e) {
+                        if (opt.handle === "") {
+                            var $drag = $(this).addClass('draggable');
+                        } else {
+                            var $drag = $(this).addClass('active-handle').parent().addClass('draggable');
+                        }
+                        var z_idx = $drag.css('z-index'),
+                            drg_h = $drag.outerHeight(),
+                            drg_w = $drag.outerWidth(),
+                            pos_y = $drag.offset().top + drg_h - e.pageY,
+                            pos_x = $drag.offset().left + drg_w - e.pageX;
+                        $drag.css('z-index', 1000).parents().on("mousemove", function (e) {
+                            $('.draggable').offset({
+                                top: e.pageY + pos_y - drg_h,
+                                left: e.pageX + pos_x - drg_w
+                            }).on("mouseup", function () {
+                                $(this).removeClass('draggable').css('z-index', z_idx);
+                            });
                         });
+                        e.preventDefault(); // disable selection
+                    }).on("mouseup", function () {
+                        if (opt.handle === "") {
+                            $(this).removeClass('draggable');
+                        } else {
+                            $(this).removeClass('active-handle').parent().removeClass('draggable');
+                        }
                     });
-                    e.preventDefault(); // disable selection
-                }).on("mouseup", function () {
-                    if (opt.handle === "") {
-                        $(this).removeClass('draggable');
-                    } else {
-                        $(this).removeClass('active-handle').parent().removeClass('draggable');
-                    }
-                });
 
-            }
-        })(jQuery);
+                }
+            })(jQuery);
 
-        $('.card').drags();
-    </script>
+            $('.card').drags();
+        </script>*@
     <script src=@Url.Content("~/vendors/js/vendor.bundle.base.js")></script>
     <script src=@Url.Content("~/vendors/js/vendor.bundle.addons.js")></script>
     <!-- endinject -->
+    <script src="https://cdn.flexmonster.com/flexmonster.js"></script>
+    <script src="https://cdn.flexmonster.com/lib/flexmonster.fusioncharts.js"></script>
+    <script src="https://static.fusioncharts.com/code/latest/fusioncharts.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.9/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.0.3/js/dataTables.buttons.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.0.3/js/buttons.print.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.0.3/js/buttons.flash.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.0.3/js/buttons.html5.min.js"></script>
     <!-- Plugin js for this page-->
     <!-- End plugin js for this page-->
     <!-- inject:js -->
@@ -388,50 +430,12 @@
     <!-- Custom js for this page-->
     <script src=@Url.Content("~/js/dashboard.js")></script>
     <script src=@Url.Content("~/js/chart.js")></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0/dist/Chart.min.js"></script>*@
+    <script src=@Url.Content("~/js/Chart.min.js")></script>
+    <script src=@Url.Content("~/js/utils.js")></script>
     <!-- End custom js for this page-->
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['I', 'I+', 'G', 'G+'],                
-                datasets: [{
-                    label: '# of Days',
-                    data: [12, 19, 3, 5],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                showDatasetLabels : true,
-                   cutoutPercentage: 41,
-                legend: {
-                    position: 'right',
-                },
-                scales: {
-                   xAxes: [{
-                            display: false
-                            
-                          }],
-                   yAxes: [{
-                            display: false
-                            
-                          }]
-                }
-            }
-        });
-    </script>
+    @RenderSection("chartScript", required: false)
+
+
 </body>
 </html>

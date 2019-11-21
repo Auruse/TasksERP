@@ -1,0 +1,699 @@
+﻿@model IEnumerable<TasksERP.Models.AllEmployee>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="content-wrapper">
+
+         
+
+
+        <div class="row">
+            <div class="col-xl-9 col-lg-7 col-md-7 col-sm-4 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Filter Options</h4>
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+                            <form class="form-sample">
+                                <p class="card-description">
+                                    Info
+                                </p>
+
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Start Date</label>
+                                            <div class="col-sm-9">
+                                                @Html.Editor("StartDate", new { htmlAttributes = new { @class = "form-control", @placeholder = "dd/mm/yyyy" } })
+                                                @*<input class="form-control" placeholder="dd/mm/yyyy">*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">End Date</label>
+                                            <div class="col-sm-9">
+                                                @Html.Editor("EndDate", new { htmlAttributes = new { @class = "form-control", @placeholder = "dd/mm/yyyy" } })
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">JobTitle</label>
+                                            <div class="col-sm-9">
+                                                @Html.DropDownList("Jobtitle", new List<SelectListItem>
+                                                    {
+                                                       new SelectListItem{ Text="Bookkeeper", Value = "Bookkeeper" },
+                                                       new SelectListItem{ Text="Consultant", Value = "Consultant" },
+                                                       new SelectListItem{ Text="Senior Consultant", Value = "Senior Consultant" }
+
+                                                }, new { htmlAttributes = new { @class = "form-control" } })
+
+                                                @*<select class="form-control">
+                                                    <option>Bookkeeper</option>
+                                                    <option>Consultant</option>
+                                                    <option>Senior Consultant</option>
+                                                </select>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Name</label>
+                                            <div class="col-sm-9">
+                                                @Html.Editor("EName", new { htmlAttributes = new { @class = "form-control" } })
+
+                                                @*<select class="form-control">
+                                                    <option>Bookkeeper</option>
+                                                    <option>Consultant</option>
+                                                    <option>Senior Consultant</option>
+                                                </select>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <button type="submit" class="btn btn-success mr-2">Submit</button>
+                                </div>
+
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Assessment Statistics</h4>
+                    @*<p class="card-description">
+                        Add class
+                        <code>.table-striped</code>
+                    </p>*@
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Assessmen Period
+                                    </th>
+                                    <th>
+                                        Employee
+                                    </th>
+                                    <th>
+                                        Department
+                                    </th>
+                                    <th>
+                                        JobTitle
+                                    </th>
+                                    <th>
+                                        Senior
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PayrollCaclMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.PayrollCaclComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.PreparationOfTaxReturnMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.PreparationOfTaxReturnComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ReportingToHeadOfficeMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.ReportingToHeadOfficeComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EnglishSkillsMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.EnglishSkillsComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ConsultingOfClientsMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.ConsultingOfClientsComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.SpeedOfWorkMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.SpeedOfWorkComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.QualityOfWorkMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.QualityOfWorkComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ComplianceWithInternalProceduresMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.ComplianceWithInternalProceduresComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.CommunicationWithClientsMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.CommunicationWithClientsComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TeamWorkMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.TeamWorkComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.TeachingOfSubordinatesMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.TeachingOfSubordinatesComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ControlOfTeamWorkMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.ControlOfTeamWorkComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.OrganizationOfTeamWorkMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.OrganizationOfTeamWorkComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ProactiveApproachMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.ProactiveApproachComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ConsultingMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.ConsultingComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DifficultyOfClientsMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.DifficultyOfClientsComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.EnglishLanguageMark)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.EnglishLanguageComments)
+                                    </th>*@
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.MarkByManager)
+                                    </th>
+                                    @*<th>
+                                        @Html.DisplayNameFor(model => model.MarkByManagerComments)
+                                    </th>*@
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AssessmentPeriod)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.AppraiseeName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Department)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.JobTitle)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SeniorName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PayrollCaclMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.PayrollCaclComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.PreparationOfTaxReturnMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.PreparationOfTaxReturnComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ReportingToHeadOfficeMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.ReportingToHeadOfficeComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EnglishSkillsMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.EnglishSkillsComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ConsultingOfClientsMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.ConsultingOfClientsComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.SpeedOfWorkMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.SpeedOfWorkComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.QualityOfWorkMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.QualityOfWorkComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ComplianceWithInternalProceduresMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.ComplianceWithInternalProceduresComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CommunicationWithClientsMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.CommunicationWithClientsComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TeamWorkMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.TeamWorkComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.TeachingOfSubordinatesMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.TeachingOfSubordinatesComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ControlOfTeamWorkMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.ControlOfTeamWorkComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OrganizationOfTeamWorkMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.OrganizationOfTeamWorkComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProactiveApproachMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.ProactiveApproachComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ConsultingMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.ConsultingComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DifficultyOfClientsMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.DifficultyOfClientsComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.EnglishLanguageMark)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.EnglishLanguageComments)
+                                        </td>*@
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.MarkByManager)
+                                        </td>
+                                        @*<td>
+                                            @Html.DisplayFor(modelItem => item.MarkByManagerComments)
+                                        </td>*@
+                                        @*<td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                                        </td>*@
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CreationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ApproveDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssessmentDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssessmentPeriod)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FilingDeadline)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppraiseeMail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppraiseeName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppraiseeMail2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppraiseeName2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Department)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.JobTitle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeniorMail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SeniorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManagerMail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ManagerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayrollCaclMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PayrollCaclComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreparationOfTaxReturnMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PreparationOfTaxReturnComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportingToHeadOfficeMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReportingToHeadOfficeComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnglishSkillsMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnglishSkillsComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConsultingOfClientsMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConsultingOfClientsComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpeedOfWorkMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpeedOfWorkComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QualityOfWorkMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QualityOfWorkComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplianceWithInternalProceduresMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ComplianceWithInternalProceduresComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommunicationWithClientsMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CommunicationWithClientsComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamWorkMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeamWorkComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeachingOfSubordinatesMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TeachingOfSubordinatesComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ControlOfTeamWorkMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ControlOfTeamWorkComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationOfTeamWorkMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrganizationOfTeamWorkComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProactiveApproachMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProactiveApproachComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConsultingMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ConsultingComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DifficultyOfClientsMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DifficultyOfClientsComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnglishLanguageMark)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EnglishLanguageComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarkByManager)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MarkByManagerComments)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ApproveDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssessmentDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AssessmentPeriod)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FilingDeadline)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppraiseeMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppraiseeName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppraiseeMail2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AppraiseeName2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobTitle)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeniorMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SeniorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManagerMail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ManagerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayrollCaclMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PayrollCaclComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreparationOfTaxReturnMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PreparationOfTaxReturnComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportingToHeadOfficeMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReportingToHeadOfficeComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnglishSkillsMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnglishSkillsComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsultingOfClientsMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsultingOfClientsComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpeedOfWorkMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SpeedOfWorkComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QualityOfWorkMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QualityOfWorkComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplianceWithInternalProceduresMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ComplianceWithInternalProceduresComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommunicationWithClientsMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CommunicationWithClientsComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamWorkMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeamWorkComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeachingOfSubordinatesMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TeachingOfSubordinatesComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ControlOfTeamWorkMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ControlOfTeamWorkComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizationOfTeamWorkMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrganizationOfTeamWorkComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProactiveApproachMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProactiveApproachComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsultingMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConsultingComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DifficultyOfClientsMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DifficultyOfClientsComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnglishLanguageMark)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnglishLanguageComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarkByManager)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MarkByManagerComments)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>*@

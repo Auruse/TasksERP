@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="Хранилище AssessCenterModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AllEmployees">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" />
+          <Property Name="ApproveDate" Type="datetime" />
+          <Property Name="AssessmentDate" Type="datetime" />
+          <Property Name="AssessmentPeriod" Type="nvarchar(max)" />
+          <Property Name="FilingDeadline" Type="nvarchar" MaxLength="50" />
+          <Property Name="AppraiseeMail" Type="varchar(max)" Nullable="false" />
+          <Property Name="AppraiseeName" Type="varchar(max)" Nullable="false" />
+          <Property Name="AppraiseeMail2" Type="nvarchar(max)" />
+          <Property Name="AppraiseeName2" Type="nvarchar(max)" />
+          <Property Name="Department" Type="nvarchar(max)" />
+          <Property Name="JobTitle" Type="nvarchar(max)" />
+          <Property Name="SeniorMail" Type="nvarchar(max)" />
+          <Property Name="SeniorName" Type="nvarchar(max)" />
+          <Property Name="Grade" Type="nvarchar(max)" />
+          <Property Name="ManagerMail" Type="nvarchar(max)" />
+          <Property Name="ManagerName" Type="nvarchar(max)" />
+          <Property Name="PayrollCaclMark" Type="nvarchar(max)" />
+          <Property Name="PayrollCaclComments" Type="nvarchar(max)" />
+          <Property Name="PreparationOfTaxReturnMark" Type="nvarchar(max)" />
+          <Property Name="PreparationOfTaxReturnComments" Type="nvarchar(max)" />
+          <Property Name="ReportingToHeadOfficeMark" Type="nvarchar(max)" />
+          <Property Name="ReportingToHeadOfficeComments" Type="nvarchar(max)" />
+          <Property Name="EnglishSkillsMark" Type="nvarchar(max)" />
+          <Property Name="EnglishSkillsComments" Type="nvarchar(max)" />
+          <Property Name="ConsultingOfClientsMark" Type="nvarchar(max)" />
+          <Property Name="ConsultingOfClientsComments" Type="nvarchar(max)" />
+          <Property Name="SpeedOfWorkMark" Type="nvarchar(max)" />
+          <Property Name="SpeedOfWorkComments" Type="nvarchar(max)" />
+          <Property Name="QualityOfWorkMark" Type="nvarchar(max)" />
+          <Property Name="QualityOfWorkComments" Type="nvarchar(max)" />
+          <Property Name="ComplianceWithInternalProceduresMark" Type="nvarchar(max)" />
+          <Property Name="ComplianceWithInternalProceduresComments" Type="nvarchar(max)" />
+          <Property Name="CommunicationWithClientsMark" Type="nvarchar(max)" />
+          <Property Name="CommunicationWithClientsComments" Type="nvarchar(max)" />
+          <Property Name="TeamWorkMark" Type="nvarchar(max)" />
+          <Property Name="TeamWorkComments" Type="nvarchar(max)" />
+          <Property Name="TeachingOfSubordinatesMark" Type="nvarchar(max)" />
+          <Property Name="TeachingOfSubordinatesComments" Type="nvarchar(max)" />
+          <Property Name="ControlOfTeamWorkMark" Type="nvarchar(max)" />
+          <Property Name="ControlOfTeamWorkComments" Type="nvarchar(max)" />
+          <Property Name="OrganizationOfTeamWorkMark" Type="nvarchar(max)" />
+          <Property Name="OrganizationOfTeamWorkComments" Type="nvarchar(max)" />
+          <Property Name="ProactiveApproachMark" Type="nvarchar(max)" />
+          <Property Name="ProactiveApproachComments" Type="nvarchar(max)" />
+          <Property Name="ConsultingMark" Type="nvarchar(max)" />
+          <Property Name="ConsultingComments" Type="nvarchar(max)" />
+          <Property Name="DifficultyOfClientsMark" Type="nvarchar(max)" />
+          <Property Name="DifficultyOfClientsComments" Type="nvarchar(max)" />
+          <Property Name="EnglishLanguageMark" Type="nvarchar(max)" />
+          <Property Name="EnglishLanguageComments" Type="nvarchar(max)" />
+          <Property Name="MarkByManager" Type="nvarchar(max)" />
+          <Property Name="MarkByManagerComments" Type="nvarchar(max)" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AssessCenter.dbo.EmpStat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="EmpStat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssessmentPeriod" Type="nvarchar(max)" />
+          <Property Name="AppraiseeMail" Type="varchar(max)" />
+          <Property Name="AppraiseeName" Type="varchar(max)" />
+          <Property Name="Department" Type="nvarchar(max)" />
+          <Property Name="JobTitle" Type="nvarchar(max)" />
+          <Property Name="SeniorMail" Type="nvarchar(max)" />
+          <Property Name="SeniorName" Type="nvarchar(max)" />
+          <Property Name="Grade" Type="nvarchar(max)" />
+          <Property Name="ManagerMail" Type="nvarchar(max)" />
+          <Property Name="ManagerName" Type="nvarchar(max)" />
+          <Property Name="MarkByManager" Type="int" />
+          <Property Name="MarkByManagerComments" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityContainer Name="Хранилище AssessCenterModelContainer">
+          <EntitySet Name="AllEmployees" EntityType="Self.AllEmployees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpStat" EntityType="Self.EmpStat" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [EmpStat].[Id] AS [Id], 
+    [EmpStat].[AssessmentPeriod] AS [AssessmentPeriod], 
+    [EmpStat].[AppraiseeMail] AS [AppraiseeMail], 
+    [EmpStat].[AppraiseeName] AS [AppraiseeName], 
+    [EmpStat].[Department] AS [Department], 
+    [EmpStat].[JobTitle] AS [JobTitle], 
+    [EmpStat].[SeniorMail] AS [SeniorMail], 
+    [EmpStat].[SeniorName] AS [SeniorName], 
+    [EmpStat].[Grade] AS [Grade], 
+    [EmpStat].[ManagerMail] AS [ManagerMail], 
+    [EmpStat].[ManagerName] AS [ManagerName], 
+    [EmpStat].[MarkByManager] AS [MarkByManager], 
+    [EmpStat].[MarkByManagerComments] AS [MarkByManagerComments]
+    FROM [dbo].[EmpStat] AS [EmpStat]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AssessCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AllEmployee">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ApproveDate" Type="DateTime" Precision="3" />
+          <Property Name="AssessmentDate" Type="DateTime" Precision="3" />
+          <Property Name="AssessmentPeriod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="FilingDeadline" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AppraiseeMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AppraiseeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="AppraiseeMail2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AppraiseeName2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeniorMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeniorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PayrollCaclMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PayrollCaclComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PreparationOfTaxReturnMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PreparationOfTaxReturnComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReportingToHeadOfficeMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ReportingToHeadOfficeComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishSkillsMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishSkillsComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsultingOfClientsMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsultingOfClientsComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SpeedOfWorkMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SpeedOfWorkComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QualityOfWorkMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="QualityOfWorkComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComplianceWithInternalProceduresMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ComplianceWithInternalProceduresComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommunicationWithClientsMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CommunicationWithClientsComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeamWorkMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeamWorkComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeachingOfSubordinatesMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TeachingOfSubordinatesComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ControlOfTeamWorkMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ControlOfTeamWorkComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizationOfTeamWorkMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OrganizationOfTeamWorkComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProactiveApproachMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProactiveApproachComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsultingMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ConsultingComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DifficultyOfClientsMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="DifficultyOfClientsComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishLanguageMark" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="EnglishLanguageComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MarkByManager" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MarkByManagerComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="AssessCenterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AllEmployees" EntityType="Self.AllEmployee" />
+          <EntitySet Name="EmpStats" EntityType="AssessCenterModel.EmpStat" />
+        </EntityContainer>
+        <EntityType Name="EmpStat">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssessmentPeriod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AppraiseeMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="AppraiseeName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Department" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="JobTitle" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeniorMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SeniorName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Grade" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerMail" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ManagerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MarkByManager" Type="Int32" />
+          <Property Name="MarkByManagerComments" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище AssessCenterModelContainer" CdmEntityContainer="AssessCenterEntities">
+          <EntitySetMapping Name="AllEmployees">
+            <EntityTypeMapping TypeName="AssessCenterModel.AllEmployee">
+              <MappingFragment StoreEntitySet="AllEmployees">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="ApproveDate" ColumnName="ApproveDate" />
+                <ScalarProperty Name="AssessmentDate" ColumnName="AssessmentDate" />
+                <ScalarProperty Name="AssessmentPeriod" ColumnName="AssessmentPeriod" />
+                <ScalarProperty Name="FilingDeadline" ColumnName="FilingDeadline" />
+                <ScalarProperty Name="AppraiseeMail" ColumnName="AppraiseeMail" />
+                <ScalarProperty Name="AppraiseeName" ColumnName="AppraiseeName" />
+                <ScalarProperty Name="AppraiseeMail2" ColumnName="AppraiseeMail2" />
+                <ScalarProperty Name="AppraiseeName2" ColumnName="AppraiseeName2" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="SeniorMail" ColumnName="SeniorMail" />
+                <ScalarProperty Name="SeniorName" ColumnName="SeniorName" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="ManagerMail" ColumnName="ManagerMail" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="PayrollCaclMark" ColumnName="PayrollCaclMark" />
+                <ScalarProperty Name="PayrollCaclComments" ColumnName="PayrollCaclComments" />
+                <ScalarProperty Name="PreparationOfTaxReturnMark" ColumnName="PreparationOfTaxReturnMark" />
+                <ScalarProperty Name="PreparationOfTaxReturnComments" ColumnName="PreparationOfTaxReturnComments" />
+                <ScalarProperty Name="ReportingToHeadOfficeMark" ColumnName="ReportingToHeadOfficeMark" />
+                <ScalarProperty Name="ReportingToHeadOfficeComments" ColumnName="ReportingToHeadOfficeComments" />
+                <ScalarProperty Name="EnglishSkillsMark" ColumnName="EnglishSkillsMark" />
+                <ScalarProperty Name="EnglishSkillsComments" ColumnName="EnglishSkillsComments" />
+                <ScalarProperty Name="ConsultingOfClientsMark" ColumnName="ConsultingOfClientsMark" />
+                <ScalarProperty Name="ConsultingOfClientsComments" ColumnName="ConsultingOfClientsComments" />
+                <ScalarProperty Name="SpeedOfWorkMark" ColumnName="SpeedOfWorkMark" />
+                <ScalarProperty Name="SpeedOfWorkComments" ColumnName="SpeedOfWorkComments" />
+                <ScalarProperty Name="QualityOfWorkMark" ColumnName="QualityOfWorkMark" />
+                <ScalarProperty Name="QualityOfWorkComments" ColumnName="QualityOfWorkComments" />
+                <ScalarProperty Name="ComplianceWithInternalProceduresMark" ColumnName="ComplianceWithInternalProceduresMark" />
+                <ScalarProperty Name="ComplianceWithInternalProceduresComments" ColumnName="ComplianceWithInternalProceduresComments" />
+                <ScalarProperty Name="CommunicationWithClientsMark" ColumnName="CommunicationWithClientsMark" />
+                <ScalarProperty Name="CommunicationWithClientsComments" ColumnName="CommunicationWithClientsComments" />
+                <ScalarProperty Name="TeamWorkMark" ColumnName="TeamWorkMark" />
+                <ScalarProperty Name="TeamWorkComments" ColumnName="TeamWorkComments" />
+                <ScalarProperty Name="TeachingOfSubordinatesMark" ColumnName="TeachingOfSubordinatesMark" />
+                <ScalarProperty Name="TeachingOfSubordinatesComments" ColumnName="TeachingOfSubordinatesComments" />
+                <ScalarProperty Name="ControlOfTeamWorkMark" ColumnName="ControlOfTeamWorkMark" />
+                <ScalarProperty Name="ControlOfTeamWorkComments" ColumnName="ControlOfTeamWorkComments" />
+                <ScalarProperty Name="OrganizationOfTeamWorkMark" ColumnName="OrganizationOfTeamWorkMark" />
+                <ScalarProperty Name="OrganizationOfTeamWorkComments" ColumnName="OrganizationOfTeamWorkComments" />
+                <ScalarProperty Name="ProactiveApproachMark" ColumnName="ProactiveApproachMark" />
+                <ScalarProperty Name="ProactiveApproachComments" ColumnName="ProactiveApproachComments" />
+                <ScalarProperty Name="ConsultingMark" ColumnName="ConsultingMark" />
+                <ScalarProperty Name="ConsultingComments" ColumnName="ConsultingComments" />
+                <ScalarProperty Name="DifficultyOfClientsMark" ColumnName="DifficultyOfClientsMark" />
+                <ScalarProperty Name="DifficultyOfClientsComments" ColumnName="DifficultyOfClientsComments" />
+                <ScalarProperty Name="EnglishLanguageMark" ColumnName="EnglishLanguageMark" />
+                <ScalarProperty Name="EnglishLanguageComments" ColumnName="EnglishLanguageComments" />
+                <ScalarProperty Name="MarkByManager" ColumnName="MarkByManager" />
+                <ScalarProperty Name="MarkByManagerComments" ColumnName="MarkByManagerComments" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpStats">
+            <EntityTypeMapping TypeName="AssessCenterModel.EmpStat">
+              <MappingFragment StoreEntitySet="EmpStat">
+                <ScalarProperty Name="MarkByManagerComments" ColumnName="MarkByManagerComments" />
+                <ScalarProperty Name="MarkByManager" ColumnName="MarkByManager" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="ManagerMail" ColumnName="ManagerMail" />
+                <ScalarProperty Name="Grade" ColumnName="Grade" />
+                <ScalarProperty Name="SeniorName" ColumnName="SeniorName" />
+                <ScalarProperty Name="SeniorMail" ColumnName="SeniorMail" />
+                <ScalarProperty Name="JobTitle" ColumnName="JobTitle" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="AppraiseeName" ColumnName="AppraiseeName" />
+                <ScalarProperty Name="AppraiseeMail" ColumnName="AppraiseeMail" />
+                <ScalarProperty Name="AssessmentPeriod" ColumnName="AssessmentPeriod" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

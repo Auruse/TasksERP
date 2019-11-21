@@ -1,0 +1,387 @@
+﻿@model System.Data.DataTable
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-panel">
+    <div class="col-xl-3 col-lg-8 col-md-8 col-sm-8 grid-margin stretch-card">
+        @*<div class="col-xl-3 col-lg-5 col-md-5 col-sm-4 grid-margin stretch-card">*@
+            <div class="card card-body">
+                <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+                <h6 class="card">Mark by number of days</h6>
+                <canvas id="Chart" style="height: 182px; display: block; width: 364px;" width="364" height="182" class="chartjs-render-monitor"></canvas>
+            </div>
+
+        </div>
+        <div id="pivotContainer"></div>
+        <div id="fusionchartContainer"></div>
+
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <button id="button">Row count</button>
+                    <h4 class="card-title">Assessment Statistics</h4>
+                    @*<p class="card-description">
+                        Add class
+                        <code>.table-striped</code>
+                    </p>*@
+                    <div class="table-responsive">
+                        <table id="example" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    @{
+                                        foreach (System.Data.DataColumn col in Model.Columns)
+                                        {
+                                            <th>
+                                                @col.Caption
+                                            </th>
+
+                                        }
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                @foreach (System.Data.DataRow row in Model.Rows)
+                                {
+
+                                    <tr>
+                                        @foreach (var cell in row.ItemArray)
+                                        {
+
+
+                                            <td>
+                                                @cell.ToString()
+                                            </td>
+
+
+
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@section tableScript{
+    <script>
+        $(function ()
+        {
+                    var table = $('#example').DataTable(
+                        {
+                            dom: 'Bfrtip',
+                            buttons: [
+                                'copy', 'csv', 'excel', 'pdf', 'print'
+                            ]
+                        });
+
+                    var ctx = document.getElementById('Chart').getContext('2d');
+
+          
+
+
+            $('#example tbody').on('click', 'tr', function ()
+            {
+                $(this).toggleClass('selected');
+                //var dt = table.rows('.selected').data().slice(4,8);
+                var columnsData = [];
+                //columnsData.push('['+$('.selected td').slice(4,9).text().trim().replace(/\n/gi, ',').replace(/  /gi,'').replace(/,,/gi,',')+']');
+                var myChart = new Chart(ctx,
+                {
+
+                    type: 'line',                      
+                    data:
+                    {
+                        labels: '[\''+$('th').slice(4,9).text().trim().replace(/\n/gi, ',').replace(/  /gi,'').replace(/,,/gi,'\',\'')+'\']',
+                        datasets: [{
+                            data:  $('.selected td').slice(4, 9).text().trim().replace(/\n/gi, ',').replace(/  /gi, '').replace(/,,/gi, ',') , //$('td').slice(4, 6).text(),
+                            label:  $('.selected td').slice(0,1).text() ,
+                        }]
+
+                    },
+                    options:
+                    {
+			            responsive: true,
+			            title: {
+				            display: true,
+				            text: 'Chart.js Line Chart - Logarithmic'
+			            },
+			            scales: {
+                            xAxes: [{
+                                display: true,
+                                ticks: {
+                                    userCallback: function (tick, value, ticks) {
+                                        // `ticks` is the default display
+                                        // `.split("")` makes it an array of every character
+                                        return tick.split("");
+                                    }
+                                }
+                            }],
+				            yAxes: [{
+					            display: true,
+					             
+				            }]
+			            }
+		            }
+                });
+
+            });
+
+
+             
+        });
+        
+        
+	//var randomScalingFactor = function() {
+	//	return Math.ceil(Math.random() * 10.0) * Math.pow(10, Math.ceil(Math.random() * 5));
+	//};
+
+	//var config = {
+	//	type: 'line',
+	//	data: {
+	//		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+	//		datasets: [{
+	//			label: 'My First dataset',
+	//			backgroundColor: window.chartColors.red,
+	//			borderColor: window.chartColors.red,
+	//			fill: false,
+	//			data: [
+	//				randomScalingFactor(),
+	//				randomScalingFactor(),
+	//				randomScalingFactor(),
+	//				randomScalingFactor(),
+	//				randomScalingFactor(),
+	//				randomScalingFactor(),
+	//				randomScalingFactor()
+	//			],
+	//		}, {
+	//			label: 'My Second dataset',
+	//			backgroundColor: window.chartColors.blue,
+	//			borderColor: window.chartColors.blue,
+	//			fill: false,
+	//			data: [
+	//				randomScalingFactor(),
+	//				randomScalingFactor(),
+	//				randomScalingFactor(),
+	//				randomScalingFactor(),
+	//				randomScalingFactor(),
+	//				randomScalingFactor(),
+	//				randomScalingFactor()
+	//			],
+	//		}]
+	//	},
+	//	options: {
+	//		responsive: true,
+	//		title: {
+	//			display: true,
+	//			text: 'Chart.js Line Chart - Logarithmic'
+	//		},
+	//		scales: {
+	//			xAxes: [{
+	//				display: true,
+	//			}],
+	//			yAxes: [{
+	//				display: true,
+	//				type: 'logarithmic',
+	//			}]
+	//		}
+	//	}
+	//};
+
+	//window.onload = function() {
+	//	var ctx = document.getElementById('canvas').getContext('2d');
+	//	window.myLine = new Chart(ctx, config);
+	//};
+
+	//document.getElementById('randomizeData').addEventListener('click', function() {
+	//	config.data.datasets.forEach(function(dataset) {
+	//		dataset.data = dataset.data.map(function() {
+	//			return randomScalingFactor();
+	//		});
+
+	//	});
+
+	//	window.myLine.update();
+	//});
+	
+        //    $('#button').click(function () {
+                //var ctx = document.getElementById('Chart').getContext('2d')
+                //var dt = table.rows('.selected').data();
+                //var tableHeaders = $('th').slice(4, 8).text();
+                //var columnsTitles = [];
+                //var columnsData = [];
+                //var data = [];
+                //for (var i = 0; i < dt.length; i++) {
+                //    data.push(dt[i].slice(4, 8));
+                //    columnsTitles.push(dt[i][0]);
+                //    columnsData.push((dt[i].slice(4,8)));
+                    
+                //};
+                //renderChart(data);
+                //alert(data);
+                //alert(tableHeaders);
+
+                //data.push(result.lastWeek);
+                
+	       //  var ctx = document.getElementById('Chart').getContext('2d')
+        //var scatterChart = new Chart(ctx, {
+        //            type: 'line',
+        //            data: {
+        //                datasets: [{
+        //                    label: 'Linear Dataset',
+        //                    data: [{ x: 0, y: 1}
+        //                          ,{x: 1, y: 2 }
+        //                          ,{ x: 10, y: 1} ]
+        //                          }]
+        //                  },
+        //            options: {
+        //                scales: {
+        //                    xAxes: [{
+        //                        type: 'linear'
+        //                        ,position: 'bottom'
+        //                    }]
+        //                }
+        //            }
+        //        });
+
+            //})
+
+            //function renderChart(data) {
+            //    var ctx = document.getElementById('Chart').getContext('2d')
+            //    var myChart = new Chart(ctx,
+            //        {
+
+            //            type: 'line',
+            //            label: ['1','2','3','4'],
+            //            data: [10,30,10,30],
+            //            options:
+            //            {
+            //                scales:
+            //                {
+            //                    yAxes:
+            //                        [
+            //                            {
+            //                                stacked: true
+            //                            }
+            //                        ]
+            //                }
+            //            }
+            //        })
+            //};
+            //        {
+            //            type: 'line',
+            //            data: {
+            //                labels: labels,
+            //                datasets: [
+            //                    {
+            //                        label: 'This week',
+            //                        data: data,
+            //                        borderColor: 'rgba(75, 192, 192, 1)',
+            //                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            //                    }
+            //                    //,
+            //                    //{
+            //                    //    label: 'Last week',
+            //                    //    data: data[1],
+            //                    //    borderColor: 'rgba(192, 192, 192, 1)',
+            //                    //    backgroundColor: 'rgba(192, 192, 192, 0.2)',
+            //                    //}
+            //                ]
+            //            },
+            //            options:
+            //            {
+            //                    showDatasetLabels: true,
+            //                    cutoutPercentage: 41,
+            //                    legend:
+            //                    {
+            //                        position: 'right',
+            //                    },
+            //                scales:
+            //                {
+            //                    xAxes:
+            //                        [
+            //                            {
+            //                                display: false
+
+            //                            }
+            //                        ],
+            //                    yAxes:
+            //                        [
+            //                            {
+            //                                display: false
+
+            //                            }
+            //                        ]
+            //                }
+            //            }                     
+            //        });
+            //};
+
+       
+
+            //    //alert( table.rows('.selected').data().length +' row(s) selected ');
+            //    var ctx = document.getElementById('Chart').getContext('2d');
+            //    var dt = table.rows('.selected').data()
+            //    var tableHeaders = $('th').slice(4,8).text()
+            //    var columnsTitles = [];
+            //    var columnsData = [];
+            //       for(var i=0; i<dt.length; i++){
+            //           columnsTitles.push(dt[i][0]);
+            //           columnsData.push((dt[i].slice(4,8)));
+
+
+
+            //    //alert(tableHeaders)
+            //    //alert(columnsTitles)
+            //    alert(tableHeaders)
+            //    alert(columnsData[0])
+            //    var myChart = new Chart(ctx, {
+            //    type: 'line',
+            //    data: {
+            //                labels: tableHeaders,
+            //                datasets: [
+            //                    {
+            //                        label: 'This week',
+            //                        data: columnsData[0],
+            //                        borderColor: 'rgba(75, 192, 192, 1)',
+            //                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+            //                    },
+            //                    {
+            //                        label: 'Last week',
+            //                        data: columnsData[1],
+            //                        borderColor: 'rgba(192, 192, 192, 1)',
+            //                        backgroundColor: 'rgba(192, 192, 192, 0.2)',
+            //                    }
+            //                ]
+            //            },
+            //    options: {
+            //    showDatasetLabels: true,
+            //    cutoutPercentage: 41,
+            //    legend: {
+            //    position: 'right',
+            //    },
+            //    scales: {
+            //    xAxes: [{
+            //    display: false
+
+            //    }],
+            //    yAxes: [{
+            //    display: false
+
+            //    }]
+            //    }
+            //    }
+            //    });
+
+            //     console.log( table.rows('.selected').data() );
+            //} );
+        //});
+    </script>
+
+}
