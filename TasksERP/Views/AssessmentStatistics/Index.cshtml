@@ -7,22 +7,24 @@
 }
 
 <div class="main-panel">
-    <div class="col-xl-3 col-lg-8 col-md-8 col-sm-8 grid-margin stretch-card">
+    <div class="col-xl-5 col-lg-5 col-md-5 col-sm-5 stretch-card">
         @*<div class="col-xl-3 col-lg-5 col-md-5 col-sm-4 grid-margin stretch-card">*@
-            <div class="card card-body">
-                <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
-                <h6 class="card">Mark by number of days</h6>
-                <canvas id="Chart" style="height: 182px; display: block; width: 364px;" width="364" height="182" class="chartjs-render-monitor"></canvas>
-            </div>
+        @*<div class="card card-body">*@
+            <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+            @*<h6 class="card">Mark by number of days</h6>*@
+            <canvas id="Chart" style="height: 228px; display: block; width: 428px;" width="428" height="228" class="chartjs-render-monitor"></canvas>
+
+             @*<canvas id="Chart" style="height: 182px; display: block; width: 364px;" width="364" height="182" class="chartjs-render-monitor"></canvas>*@
+        @*</div>*@
 
         </div>
-        <div id="pivotContainer"></div>
-        <div id="fusionchartContainer"></div>
+        @*<div id="pivotContainer"></div>
+        <div id="fusionchartContainer"></div>*@
 
         <div class="row">
             <div class="card">
                 <div class="card-body">
-                    <button id="button">Row count</button>
+                    @*<button id="button">Row count</button>*@
                     <h4 class="card-title">Assessment Statistics</h4>
                     @*<p class="card-description">
                         Add class
@@ -83,26 +85,55 @@
 
                     var ctx = document.getElementById('Chart').getContext('2d');
 
-          
+            var newDataset =
+            {
+                label: [],
+                data: []
+            };
 
 
-            $('#example tbody').on('click', 'tr', function ()
+            $('#example').on('click', 'tr', function (e)
             {
                 $(this).toggleClass('selected');
-                //var dt = table.rows('.selected').data().slice(4,8);
-                var columnsData = [];
+                
+                        const clickedElement = $(e.target);
+                        var tr = clickedElement.closest('tr');
+                        var row = table.row(tr);
+                        var record = row.data();
+                        newDataset.data.push(record.slice(0,1) ,record.slice(4,9));
+                        alert(newDataset[0].data +' || ' + newDataset[0].label)
+                        
+                //var columnsData = [];
+                //$('.selected td').each(function (e)
+                //{
+                //    //columnsData.push(e.slice(4, 9).text().trim().replace(/\n/gi, ',').replace(/  /gi, '').replace(/,,/gi, ',').split(','));
+                //    alert(e);
+                //    //alert(columnsData[0]);
+                    
+                //});
+                 
+                //var array = $('.selected td').map(function(){
+                            //   columnsData.push($(this).text().slice(4, 9).text().trim().replace(/\n/gi, ',').replace(/  /gi, '').replace(/,,/gi, ',').split(','));
+                            //   return $(this).text();
+                            //}).get();
+                
                 //columnsData.push('['+$('.selected td').slice(4,9).text().trim().replace(/\n/gi, ',').replace(/  /gi,'').replace(/,,/gi,',')+']');
+                //$('.selected td').slice(4, 9).text().trim().replace(/\n/gi, ',').replace(/  /gi, '').replace(/,,/gi, ',').split(',')
                 var myChart = new Chart(ctx,
-                {
-
-                    type: 'line',                      
-                    data:
                     {
-                        labels: '[\''+$('th').slice(4,9).text().trim().replace(/\n/gi, ',').replace(/  /gi,'').replace(/,,/gi,'\',\'')+'\']',
-                        datasets: [{
-                            data:  $('.selected td').slice(4, 9).text().trim().replace(/\n/gi, ',').replace(/  /gi, '').replace(/,,/gi, ',') , //$('td').slice(4, 6).text(),
-                            label:  $('.selected td').slice(0,1).text() ,
-                        }]
+
+                        type: 'line',
+                        data:
+                        {
+                            labels: $('th').slice(4, 9).text().trim().replace(/\n/gi, ',').replace(/  /gi, '').replace(/,,/gi, ',').split(','),
+                            datasets:
+                                [//{
+
+                                    //data: columnsData,//$('.selected td').slice(4, 9).text().trim().replace(/\n/gi, ',').replace(/  /gi, '').replace(/,,/gi, ',').split(',') , //$('td').slice(4, 6).text(),
+                                    //label: $('.selected td').slice(0, 1).text().replace(/  /gi, '').trim(),
+
+                        //        }
+                                ]
 
                     },
                     options:
@@ -110,18 +141,17 @@
 			            responsive: true,
 			            title: {
 				            display: true,
-				            text: 'Chart.js Line Chart - Logarithmic'
+				            text: 'Assessment Chart'
 			            },
 			            scales: {
                             xAxes: [{
                                 display: true,
                                 ticks: {
-                                    userCallback: function (tick, value, ticks) {
-                                        // `ticks` is the default display
-                                        // `.split("")` makes it an array of every character
-                                        return tick.split("");
-                                    }
+                                      autoSkip: false,
+                                      maxRotation: 45,
+                                      minRotation: 45
                                 }
+                                
                             }],
 				            yAxes: [{
 					            display: true,
@@ -129,259 +159,40 @@
 				            }]
 			            }
 		            }
-                });
+                    });
 
-            });
-
-
-             
-        });
-        
-        
-	//var randomScalingFactor = function() {
-	//	return Math.ceil(Math.random() * 10.0) * Math.pow(10, Math.ceil(Math.random() * 5));
-	//};
-
-	//var config = {
-	//	type: 'line',
-	//	data: {
-	//		labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-	//		datasets: [{
-	//			label: 'My First dataset',
-	//			backgroundColor: window.chartColors.red,
-	//			borderColor: window.chartColors.red,
-	//			fill: false,
-	//			data: [
-	//				randomScalingFactor(),
-	//				randomScalingFactor(),
-	//				randomScalingFactor(),
-	//				randomScalingFactor(),
-	//				randomScalingFactor(),
-	//				randomScalingFactor(),
-	//				randomScalingFactor()
-	//			],
-	//		}, {
-	//			label: 'My Second dataset',
-	//			backgroundColor: window.chartColors.blue,
-	//			borderColor: window.chartColors.blue,
-	//			fill: false,
-	//			data: [
-	//				randomScalingFactor(),
-	//				randomScalingFactor(),
-	//				randomScalingFactor(),
-	//				randomScalingFactor(),
-	//				randomScalingFactor(),
-	//				randomScalingFactor(),
-	//				randomScalingFactor()
-	//			],
-	//		}]
-	//	},
-	//	options: {
-	//		responsive: true,
-	//		title: {
-	//			display: true,
-	//			text: 'Chart.js Line Chart - Logarithmic'
-	//		},
-	//		scales: {
-	//			xAxes: [{
-	//				display: true,
-	//			}],
-	//			yAxes: [{
-	//				display: true,
-	//				type: 'logarithmic',
-	//			}]
-	//		}
-	//	}
-	//};
-
-	//window.onload = function() {
-	//	var ctx = document.getElementById('canvas').getContext('2d');
-	//	window.myLine = new Chart(ctx, config);
-	//};
-
-	//document.getElementById('randomizeData').addEventListener('click', function() {
-	//	config.data.datasets.forEach(function(dataset) {
-	//		dataset.data = dataset.data.map(function() {
-	//			return randomScalingFactor();
-	//		});
-
-	//	});
-
-	//	window.myLine.update();
-	//});
-	
-        //    $('#button').click(function () {
-                //var ctx = document.getElementById('Chart').getContext('2d')
-                //var dt = table.rows('.selected').data();
-                //var tableHeaders = $('th').slice(4, 8).text();
-                //var columnsTitles = [];
-                //var columnsData = [];
-                //var data = [];
-                //for (var i = 0; i < dt.length; i++) {
-                //    data.push(dt[i].slice(4, 8));
-                //    columnsTitles.push(dt[i][0]);
-                //    columnsData.push((dt[i].slice(4,8)));
-                    
-                //};
-                //renderChart(data);
-                //alert(data);
-                //alert(tableHeaders);
-
-                //data.push(result.lastWeek);
+                myChart.config.data.datasets.push(newDataset);
                 
-	       //  var ctx = document.getElementById('Chart').getContext('2d')
-        //var scatterChart = new Chart(ctx, {
-        //            type: 'line',
-        //            data: {
-        //                datasets: [{
-        //                    label: 'Linear Dataset',
-        //                    data: [{ x: 0, y: 1}
-        //                          ,{x: 1, y: 2 }
-        //                          ,{ x: 10, y: 1} ]
-        //                          }]
-        //                  },
-        //            options: {
-        //                scales: {
-        //                    xAxes: [{
-        //                        type: 'linear'
-        //                        ,position: 'bottom'
-        //                    }]
-        //                }
-        //            }
-        //        });
+                //$('#example tbody').on('click', 'tr td.dt-view', function (e) {
+ 
+                       
+                    //alert(e.target);
+                        //self.updateDocument(record);
+                    //for (year in model)
+                    //{
+                    //// You create a new dataset with empty values and the year as the label
+                    //var newDataset = {
+                    //    label: year,
+                    //    data: []
+                    //};
 
-            //})
+                    //// For every value for this specific year ..
+                    //for (value in model[year]) {
+                    //    // You populate the newly created dataset
+                    //    newDataset.data.push(model[year][value]);
+                    //}
 
-            //function renderChart(data) {
-            //    var ctx = document.getElementById('Chart').getContext('2d')
-            //    var myChart = new Chart(ctx,
-            //        {
+                    //// Then you add the dataset to the charts' ones
+                    //myChart.config.data.datasets.push(newDataset);
+                    //}
 
-            //            type: 'line',
-            //            label: ['1','2','3','4'],
-            //            data: [10,30,10,30],
-            //            options:
-            //            {
-            //                scales:
-            //                {
-            //                    yAxes:
-            //                        [
-            //                            {
-            //                                stacked: true
-            //                            }
-            //                        ]
-            //                }
-            //            }
-            //        })
-            //};
-            //        {
-            //            type: 'line',
-            //            data: {
-            //                labels: labels,
-            //                datasets: [
-            //                    {
-            //                        label: 'This week',
-            //                        data: data,
-            //                        borderColor: 'rgba(75, 192, 192, 1)',
-            //                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            //                    }
-            //                    //,
-            //                    //{
-            //                    //    label: 'Last week',
-            //                    //    data: data[1],
-            //                    //    borderColor: 'rgba(192, 192, 192, 1)',
-            //                    //    backgroundColor: 'rgba(192, 192, 192, 0.2)',
-            //                    //}
-            //                ]
-            //            },
-            //            options:
-            //            {
-            //                    showDatasetLabels: true,
-            //                    cutoutPercentage: 41,
-            //                    legend:
-            //                    {
-            //                        position: 'right',
-            //                    },
-            //                scales:
-            //                {
-            //                    xAxes:
-            //                        [
-            //                            {
-            //                                display: false
-
-            //                            }
-            //                        ],
-            //                    yAxes:
-            //                        [
-            //                            {
-            //                                display: false
-
-            //                            }
-            //                        ]
-            //                }
-            //            }                     
-            //        });
-            //};
-
-       
-
-            //    //alert( table.rows('.selected').data().length +' row(s) selected ');
-            //    var ctx = document.getElementById('Chart').getContext('2d');
-            //    var dt = table.rows('.selected').data()
-            //    var tableHeaders = $('th').slice(4,8).text()
-            //    var columnsTitles = [];
-            //    var columnsData = [];
-            //       for(var i=0; i<dt.length; i++){
-            //           columnsTitles.push(dt[i][0]);
-            //           columnsData.push((dt[i].slice(4,8)));
+                    myChart.update();
+                //})
+                
 
 
-
-            //    //alert(tableHeaders)
-            //    //alert(columnsTitles)
-            //    alert(tableHeaders)
-            //    alert(columnsData[0])
-            //    var myChart = new Chart(ctx, {
-            //    type: 'line',
-            //    data: {
-            //                labels: tableHeaders,
-            //                datasets: [
-            //                    {
-            //                        label: 'This week',
-            //                        data: columnsData[0],
-            //                        borderColor: 'rgba(75, 192, 192, 1)',
-            //                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            //                    },
-            //                    {
-            //                        label: 'Last week',
-            //                        data: columnsData[1],
-            //                        borderColor: 'rgba(192, 192, 192, 1)',
-            //                        backgroundColor: 'rgba(192, 192, 192, 0.2)',
-            //                    }
-            //                ]
-            //            },
-            //    options: {
-            //    showDatasetLabels: true,
-            //    cutoutPercentage: 41,
-            //    legend: {
-            //    position: 'right',
-            //    },
-            //    scales: {
-            //    xAxes: [{
-            //    display: false
-
-            //    }],
-            //    yAxes: [{
-            //    display: false
-
-            //    }]
-            //    }
-            //    }
-            //    });
-
-            //     console.log( table.rows('.selected').data() );
-            //} );
-        //});
+            });             
+        });          
     </script>
 
 }
